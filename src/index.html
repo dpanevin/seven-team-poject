@@ -3,21 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Заголовок страницы</title>
+    <title>Filmoteka</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
       integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
       crossorigin="anonymous"
     />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   </head>
   <body>
-    <header></header>
+    <header class="header">
+      <div class="container">
+<nav class="navigation__header">
+  <div class="navigation">
+  <a class="logo" href="#">
+  <svg class="header__logo">
+      <use href="./images/sprite.svg#icon-film"></use>
+  </svg>
+  <h1 class="title">Filmoteka</h1>
+  </a>
+  
+      <ul class="navigation__list">
+      <li class="navigation__item line__nav">HOME</li>
+      <li class="navigation__item">MY LIBRARY</li>
+  </ul>
+  </div>
+
+  <div class="search__line">
+      <form class="search__form" id="search-form">
+          <input 
+          class="input"
+            type="text"
+            name="query"
+            placeholder="Поиск фильмов"
+          />
+          <button type="submit" class="search__btn">
+  <svg class="search__icon">
+      <use href="./images/sprite.svg#icon-search"></use>
+  </svg>
+</button>
+</div>
+</nav>
+      </div>
+  </header>
     <main></main>
     <footer class="footer">
       <div class="container">
