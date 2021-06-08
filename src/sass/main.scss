@@ -1,3 +1,6 @@
 @import './variables';
 @import './common';
 @import './header_styles';
+@import '_spinner.scss';
+@import '../../node_modules/spin.js/spin.css';
+@import './footer';
