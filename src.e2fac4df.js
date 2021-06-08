@@ -9,4 +9,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{"spin.js":"plPA"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var s=require("./spinner");
 },{"./sass/main.scss":"clu1","./spinner":"Q8ZU"}]},{},["Focm"], null)
-//# sourceMappingURL=/seven-team-poject/src.1dc6cd34.js.map
+//# sourceMappingURL=/seven-team-poject/src.e2fac4df.js.map
