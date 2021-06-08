@@ -1,5 +1,4 @@
 .header{
-    width: 320px;
     height: 230px;
     display: flex;
     background-image: linear-gradient(
@@ -122,8 +121,6 @@
 
 @media screen and (min-width: $tablet) {
     .header{
-    width: $tablet;
-    display: flex;
     background-image: linear-gradient(
         rgba(0, 0, 0, 0.56),
         rgba(0, 0, 0, 0.56)
@@ -158,8 +155,7 @@
 }
 @media screen and (min-width: $desktop) {
     .header{
-    width: $desktop;
-    display: flex;
+   
     background-image: linear-gradient(
         rgba(0, 0, 0, 0.56),
         rgba(0, 0, 0, 0.56)
