@@ -87,7 +87,7 @@
   text-align: left;
   color: $text-color;
 }
-.line__nav::after {
+.current::after {
   content: '';
   left: 0;
   bottom: -32px;
