@@ -36,10 +36,12 @@
 .header__logo{
     width: 24px;
     height: 24px;
+    fill: #818181;
 }
 .search__icon{ 
     width: 12px;
     height: 12px;
+    fill: $text-color;
 }
 .container{
     padding-top: 46px;
