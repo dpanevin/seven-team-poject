@@ -1,7 +1,7 @@
 import cardMarkupTpl from '../templates/card-template.hbs'; // забираем шаблон карточки
 
 const refs = {
-    cardSetEl: document.querySelector('.card-set')  // список для рендеринга
+    cardSetEl: document.querySelector('.card__set')  // список для рендеринга
 };
 
 export default function markupRender({ results }) {

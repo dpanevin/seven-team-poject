@@ -1,4 +1,4 @@
-.card-set {
+.card__set {
   // сетка для расположения карточек
   display: flex;
   flex-wrap: wrap;
@@ -14,7 +14,7 @@
   }
 }
 
-.card-set > .card-item {
+.card__set > .card__item {
   // сласс item для карточки - элемента списка
   margin-top: 20px;
 
