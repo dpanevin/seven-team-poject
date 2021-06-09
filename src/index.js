@@ -6,5 +6,11 @@ import filmcard from './templates/filmcard-modal.hbs';
 import MoviesApi from './js/api-service';
 const movieapi = new MoviesApi();
 
-const r = movieapi.fetchMovieById("34335");
-console.log(r);
+async function e() {
+    const r = await movieapi.fetchMovieById("34335");
+    const markup = filmcard(r);
+    l.innerHTML = markup;
+    return r;
+}
+
+e();
