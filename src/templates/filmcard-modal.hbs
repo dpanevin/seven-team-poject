@@ -1,28 +1,39 @@
 <article class="filmcard">
 
     <div class="filmcard-image__thumb">
-        <img class="filmcard-image" src="images/Rectangle 18.jpg" alt="" width="100%" />
+        <img 
+        class="filmcard-image" 
+        src="{{backdrop_path}}" 
+        alt="{{title}}" 
+        width="100%" />
     </div>
 
     <div class="filmcard-content">
-        <h2 class="filmcard-title">{{this.title}}</h2>
+        <h2 class="filmcard-title">
+            {{title}}</h2>
 
         <ul class="filmcard-title-list">
             <li class="filmcard-title-list-item">
                 <span class="vote">Vote / Votes</span>
-                <b><span class="vote_average">7.8</span>/ 3439</b>
+                <b><span 
+                class="vote_average">{{vote_average}}
+                </span>/ {{vote_count}}</b>
             </li>
-            <li class="filmcard-title-list-item">
-                <span class="popular">Popularity</span>
-                <b>g</b>
+            <li 
+            class="filmcard-title-list-item">
+                <span 
+                class="popular">Popularity</span>
+                <b>{{popularity}}</b>
             </li>
             <li class="filmcard-title-list-item">
                 <span class="original">Original Title</span>
-                <b>{{this.title}}</b>
+                <b>{{original_title}}</b>
             </li>
             <li class="filmcard-title-list-item">
                 <span class="genre">Genre</span>
-                <b>Western</b>
+                {{#each this.genres}}
+                <b>{{name}}</b>
+                {{/each}}
             </li>
         </ul>
 
@@ -31,19 +42,7 @@
             <h3>ABOUT</h3>
 
             <p class="filmcard-text">
-                Four of the West’s most infamous outlaws assemble to steal
-                a huge stash of gold from the most corrupt settlement of
-                the
-                gold rush towns. But not all goes to plan one is
-                killed and the other three escapes with bags of
-                gold hide out in the
-                abandoned gold mine where they happen across
-                another gang of three – who themselves were
-                planning to hit the very same
-                bank! As tensions rise, things go from bad to
-                worse as they realise the bags of gold are
-                filled with lead... they’ve
-                been double crossed – but by who and how?
+               {{overview}}
             </p>
         </div>
 

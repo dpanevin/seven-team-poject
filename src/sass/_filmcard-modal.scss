@@ -16,84 +16,82 @@
   margin-left: auto;
   margin-bottom: 30px;
   margin-right: auto;
-  background-color: #fff;
+  background-color: $text-color;
 }
-// .filmcard-image__thumb {
-//   width: 240px;
-// }
-// .filmcard-content {
-//   width: 240;
-// }
-// .vote {
-//   margin-right: 41px;
-//   margin-left: 0;
-//   margin-bottom: 10px;
-// }
-// .vote_average {
-//   width: 36px;
-//   height: 16px;
-//   background: #ff6b01;
-//   border-radius: 5px;
+.filmcard-image__thumb {
+  width: 240px;
+}
+.filmcard-content {
+  width: 240px;
+}
+.vote {
+  margin-right: 41px;
+  margin-left: 0;
+  margin-bottom: 10px;
+}
+.vote_average {
+  width: 36px;
+  height: 16px;
 
-//   align-items: center;
-//   text-align: center;
-//   text-transform: uppercase;
+  border-radius: 5px;
 
-//   color: #ffffff;
-// }
-// .popular {
-//   margin-right: 53px;
-//   margin-bottom: 10px;
-// }
-// .original {
-//   margin-right: 39px;
-//   margin-bottom: 10px;
-// }
-// .genre {
-//   margin-right: 76px;
-//   margin-bottom: 20px;
-// }
-// .filmcard-title-list {
-//   padding: 0;
-//   margin: 0;
-//   list-style: none;
-// }
-// .filmcard-about {
-//   margin-top: 20px;
-// }
-// .button {
-//   margin-top: 21px;
-//   width: 112px;
-//   height: 44px;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
 
-//   align-items: center;
-//   text-align: center;
-//   text-transform: uppercase;
-//   border-radius: 5px;
-// }
+  color: $text-color;
+  background: $warning-color;
+}
+.popular {
+  margin-right: 53px;
+  margin-bottom: 10px;
+}
+.original {
+  margin-right: 39px;
+  margin-bottom: 10px;
+}
+.genre {
+  margin-right: 76px;
+  margin-bottom: 20px;
+}
+.filmcard-text {
+  margin-top: 10px;
+}
+.filmcard-about {
+  margin-top: 20px;
+}
+.button {
+  margin-top: 21px;
+  width: 112px;
+  height: 44px;
+  margin-bottom: 41px;
 
-// .btnwatched {
-//   margin-right: 14px;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
 
-//   margin-left: 0;
+.btnwatched {
+  margin-right: 14px;
 
-//   background: #ff6b01;
-//   border: 0;
-//   color: #ffffff;
-// }
-// .btnqueue {
-//   margin-bottom: 41px;
+  background: #ff6b01;
+  border: 0;
+  color: $text-color;
+}
+.btnqueue {
+  margin-bottom: 41px;
 
-//   background: #ffffff;
-//   color: #000000;
-//   border: 1px solid #000000;
-// }
-// .btn__cont {
-//   display: flex;
-// }
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+}
+.btn__cont {
+  display: flex;
+}
 
 // /* ========================================== */
-@media screen and (min-width: 768px) and (max-width: 10023px) {
+@media screen and (min-width: $tablet) and (max-width: 1023px) {
   .modal {
     position: relative;
     top: 50%;
@@ -111,68 +109,60 @@
     display: flex;
   }
 
-  //   img {
-  //     width: 264px;
-  //   }
-  //   .contentbtn {
-  //     display: flex;
-  //   }
+  .filmcard-image__thumb {
+    width: 264px;
+    margin-right: 32px;
+  }
 
-  //   .filmcard-image__thumb {
-  //     width: 264px;
-  //     margin-right: 32px;
-  //   }
+  .filmcard-content {
+    width: 264px;
+    padding: 0;
+  }
 
-  //   .filmcard-content {
-  //     width: 264;
-  //     padding: 0;
-  //   }
-
-  //   .button {
-  //     margin-top: 20px;
-  //     width: 125px;
-  //   }
-  //   .btnwatched {
-  //     margin-bottom: 40px;
-  //   }
-  //   .btnqueue {
-  //     margin-bottom: 40px;
-  //   }
+  .button {
+    margin-top: 20px;
+    width: 125px;
+    margin-bottom: 40px;
+  }
 }
 // /* ================================================= */
-// @media screen and (min-width: 1024px) {
-//   .filmcard {
-//     width: 882;
-//     // height: 568;
-//     padding-left: 30px;
-//     padding-right: 30px;
-//     display: flex;
-//   }
+@media screen and (min-width: 1024px) {
+  .modal {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .filmcard {
+    width: 882px;
+    // height: 568;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+  }
 
-//   .filmcard-image__thumb {
-//     width: 396px;
-//     margin-right: 30px;
-//   }
-
-//   .filmcard-content {
-//     width: 396;
-//     padding: 0;
-//   }
-//   .button {
-//     width: 136px;
-//   }
-//   .btnwatched {
-//     margin-right: 2px;
-//   }
-//   .btnqueue {
-//     padding-left: 3px;
-//     padding-bottom: 12px;
-//     padding-right: 3px;
-//     padding-top: 14px;
-
-//     margin-bottom: 41px;
-
-//     border-width: 0.5;
-//     color: #000000;
-//   }
-// }
+  .filmcard-image__thumb {
+    width: 396px;
+    margin-right: 30px;
+  }
+  .vote {
+    margin-right: 85px;
+  }
+  .popular {
+    margin-right: 97px;
+  }
+  .original {
+    margin-right: 83px;
+  }
+  .genre {
+    margin-right: 120px;
+  }
+  .filmcard-content {
+    width: 396px;
+    padding: 0;
+  }
+  .button {
+    margin-top: 21px;
+    width: 136px;
+    margin-bottom: 102px;
+  }
+}
