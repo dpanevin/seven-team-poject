@@ -8,5 +8,5 @@ import markupRender from './js/markupRender';
 //---- заполнил страницу популярными фильмами ---------------------
 import API from './js/api-service';
 const movie = new API;
-movie.fetchTrendingMovies().then(x => markupRender(x));
+movie.fetchTrendingMovies().then(markupRender);
 //-----------------------------------------------------------------
