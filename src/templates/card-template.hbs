@@ -1,0 +1,24 @@
+<!-- карточка с фильмом -->
+{{#each this.results}}
+  <li class='card__item'>
+    <div class='card__info'>
+      <img src='{{poster_path}}' alt='постер фильма' data-attribute='{{id}}' />
+      <div class='card__description'>
+        <p class='film__title'>
+          {{title}}
+        </p>
+        <div class='film__description'>
+          <p class='film__release'>
+            {{release_date}}
+          </p>
+          <p class='film__genre'>
+            {{genre_ids}}
+          </p>
+          <p class='film__rating'>
+            {{vote_average}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </li>
+{{/each}}
