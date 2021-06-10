@@ -7,10 +7,8 @@ import markupRender from './js/markupRender';
 
 //---- заполнил страницу популярными фильмами ---------------------
 import API from './js/api-service';
-const movie = new API;
-try {
-    movie.fetchTrendingMovies().then(markupRender);
-} catch (error) {
-    console.log('Error ',error);
-}
+
+import homePageRender from './js/home';
+
+homePageRender(API, markupRender);
 //-----------------------------------------------------------------
