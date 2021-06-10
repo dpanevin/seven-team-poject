@@ -66,17 +66,20 @@ a {
 @media screen and (min-width: $mobile) {
   .container {
     max-width: $mobile;
+    padding: 0 20px;
   }
 }
 
 @media screen and (min-width: $tablet) {
   .container {
     max-width: $tablet;
+    padding: 0 75px;
   }
 }
 
 @media screen and (min-width: $desktop) {
   .container {
     max-width: $desktop;
+    padding: 0 71px;
   }
 }
