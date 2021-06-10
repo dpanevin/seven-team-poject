@@ -11,33 +11,35 @@
   }
 }
 
+.card__img {
+  width: 100%;
+}
+
 .film__title {
-    @include font(500, 12px, 0.75, #000000);
-    margin-bottom: 5px;
-    margin-top: 10px;
+  @include font(500, 12px, 0.75, #000000);
+  margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 .film__description {
-    @include font(500, 12px, 0.75, $accent-color);
-    display: flex;
-    align-items: center;
+  @include font(500, 12px, 0.75, $accent-color);
+  display: flex;
+  align-items: center;
 }
 
-.film__genre::after { 
-    content: "|";
-    color: $accent-color;
+.film__genre::after {
+  content: '|';
+  color: $accent-color;
 }
 
-.film__release, .film__genre {
-    margin-right: 5px;
+.film__release,
+.film__genre {
+  margin-right: 5px;
 }
 
 .film__rating {
-    background-color: #ff6b08;
-    color: #fff;
-    padding: 2px 6px;
-    border-radius: 4px;
+  background-color: #ff6b08;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
-
-
-
