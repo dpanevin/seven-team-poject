@@ -4,11 +4,11 @@ const refs = {
     cardSetEl: document.querySelector('.card__set')  // список для рендеринга
 };
 
-export default function markupRender({ results }) {
-    const markup = createMarkup(results);
+export default function markupRender(movieObj) {
+    const markup = createMarkup(movieObj);
     refs.cardSetEl.innerHTML = markup;  // заполняется список
 }
 
 function createMarkup(cards) {
-    return cards.map(cardMarkupTpl).join(''); // создается разметка
+    return cardMarkupTpl(cards);  // создается разметка
 }
