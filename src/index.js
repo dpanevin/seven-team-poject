@@ -11,4 +11,5 @@ import API from './js/api-service';
 import homePageRender from './js/home';
 
 homePageRender(API, markupRender);
-//-----------------------------------------------------------------
+//-------------------------------------------------------------
+import onSearch from './js/search';

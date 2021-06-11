@@ -20,7 +20,7 @@ export default class MoviesApi {
     }
 
     async fetchMoviesByQuery() {
-        const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=ru&page=${this.page}&include_adult=false&query=${this.query}`;
+        const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=ru&page=${this.page}&include_adult=false&query=${this.searchQuery}`;
 
         try {
             const response = await fetch(url);

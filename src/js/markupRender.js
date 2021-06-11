@@ -1,8 +1,11 @@
 import cardMarkupTpl from '../templates/card-template.hbs'; // забираем шаблон карточки
 
-const refs = {
-    cardSetEl: document.querySelector('.card__set')  // список для рендеринга
-};
+import getRefs from './refs';
+// const refs = {
+//     cardSetEl: document.querySelector('.card__set')  // список для рендеринга
+// };
+
+const refs = getRefs();
 
 export default function markupRender(movieObj) {
     const markup = createMarkup(movieObj);
