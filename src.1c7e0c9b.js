@@ -21,4 +21,4 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=require("./js/spinner"),r=i(require("./js/markupRender")),s=i(require("./js/api-service")),u=i(require("./js/home"));function i(e){return e&&e.__esModule?e:{default:e}}(0,u.default)(s.default,r.default);
 },{"./sass/main.scss":"clu1","./js/spinner":"Sc1o","./js/markupRender":"Ef90","./js/api-service":"hC31","./js/home":"nqs3"}]},{},["Focm"], null)
-//# sourceMappingURL=/seven-team-poject/src.6f27f335.js.map
+//# sourceMappingURL=/seven-team-poject/src.1c7e0c9b.js.map
