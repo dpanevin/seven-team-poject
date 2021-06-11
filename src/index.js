@@ -12,3 +12,7 @@ import homePageRender from './js/home';
 
 homePageRender(API, markupRender);
 //-----------------------------------------------------------------
+
+import onSearch from './js/search';
+
+
