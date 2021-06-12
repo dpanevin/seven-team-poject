@@ -2,7 +2,7 @@
 {{#each this.results}}
   <li class='card__item'>
     <div class='card__info'>
-      <img src='{{poster_path}}' alt='постер фильма' data-attribute='{{id}}' />
+      <img class="card__img" src='https://image.tmdb.org/t/p/w500/{{poster_path}}' alt='постер фильма' data-attribute='{{id}}' />
       <div class='card__description'>
         <p class='film__title'>
           {{this.title}}
