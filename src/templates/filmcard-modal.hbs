@@ -1,0 +1,58 @@
+
+<article class="filmcard">
+
+    <div class="filmcard-image__thumb">
+        <img 
+        class="filmcard-image" 
+        src="https://image.tmdb.org/t/p/w500/{{poster_path}}" 
+        alt="{{title}}" 
+        width="100%" />
+        
+    </div>
+
+    <div class="filmcard-content">
+        <h2 class="filmcard-title">
+            {{title}}</h2>
+
+        <ul class="filmcard-title-list">
+            <li class="filmcard-title-list-item">
+                <span class="vote">Vote / Votes</span>
+                <b><span 
+                class="vote_average">{{vote_average}}
+                </span>/ {{vote_count}}</b>
+            </li>
+            <li 
+            class="filmcard-title-list-item">
+                <span 
+                class="popular">Popularity</span>
+                <b>{{popularity}}</b>
+            </li>
+            <li class="filmcard-title-list-item">
+                <span class="original">Original Title</span>
+                <b>{{original_title}}</b>
+            </li>
+            <li class="filmcard-title-list-item">
+                <span class="genre">Genre</span>
+                {{#each this.genres}}
+                <b>{{name}}</b>
+                {{/each}}
+            </li>
+        </ul>
+
+        <div class="filmcard-about">
+
+            <h3>ABOUT</h3>
+
+            <p class="filmcard-text">
+               {{overview}}
+            </p>
+        </div>
+
+
+        <div class="btn__cont">
+            <button type="button" class="button btnwatched"><b>add to watched</b></button>
+            <button type="button" class="button btnqueue"><b>add to queue</b></button>
+        </div>
+
+    </div>
+</article>
