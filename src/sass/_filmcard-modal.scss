@@ -1,8 +1,9 @@
 .backdrop {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
   background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
 }
 .is-hidden {
@@ -10,20 +11,39 @@
   visibility: hidden;
   pointer-events: none;
 }
+
+// .visually-hidden {
+//   position: absolute;
+//   width: 1px;
+//   height: 1px;
+//   margin: -1px;
+//   border: 0;
+//   padding: 0;
+
+//   white-space: nowrap;
+//   clip-path: inset(100%);
+//   clip: rect(0 0 0 0);
+//   overflow: hidden;
+// }
 // .backdrop.is-hidden .modal {
 //   transform: translate(-50%, -50%) scale(0);
 //   transition: transform 250ms var(--time-fn) 250ms;
 // }
-.backdrop.is-hidden {
-  transition: all 250ms var(--time-fn) 250ms;
-}
+
+// .backdrop.is-hidden {
+//   transition: all 250ms var(--time-fn) 250ms;
+// }
 .modal {
   position: relative;
   width: 280px;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  //  margin-top: 20px;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  // margin-left: auto;
+  // margin-right: auto;
 }
+
 .btn-modal-close {
   position: absolute;
   top: 10px;
@@ -143,8 +163,9 @@
   .modal {
     position: relative;
     width: 618px;
-    top: 50%;
-    transform: translateY(-50%);
+    // top: 50%;
+    // margin-top: 231px;
+    // transform: translateY(-50%);
   }
 
   .filmcard {
@@ -152,8 +173,6 @@
     height: 562;
     padding-left: 28px;
     padding-right: 30px;
-
-    margin-top: 231px;
 
     display: flex;
   }
@@ -182,14 +201,13 @@
   .modal {
     position: relative;
     width: 882px;
-    top: 50%;
-    transform: translateY(-50%);
+    // top: 50%;
+    // margin-top: 100px;
+    // transform: translateY(-50%);
   }
   .filmcard {
     width: 882px;
     // height: 568;
-
-    margin-top: 100px;
 
     padding-left: 30px;
     padding-right: 30px;
@@ -224,4 +242,8 @@
     width: 136px;
     margin-bottom: 102px;
   }
+}
+
+.modal-open {
+  overflow: hidden;
 }
