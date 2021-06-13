@@ -1,5 +1,31 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/auth';
+import 'firebase/database';
+import 'firebase/messaging';
+import 'firebase/storage';
+
+document.addEventListener('DOMContentLoaded', event => {
+  const app = firebase.app();
+  // console.log(app);
+});
+
+const loginEl = document.querySelector('.auth');
+
+loginEl.addEventListener('click', googleLogin);
+
+function googleLogin() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then(result => {
+      const user = result.user;
+      loginEl.innerText = `Вы вошли как ${user.displayName}`;
+      console.log(user);
+    })
+    .catch(console.log);
+}
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDdl0b3K_4fjMGLjZ2-JHtxj81J32at2gE',
@@ -15,7 +41,7 @@ firebase.initializeApp(firebaseConfig);
 let firestore = firebase.firestore();
 // console.log(firestore);
 
-const docRef = firestore.doc('watchedFilms/watchedFilmsID');
+const docRef = firestore.doc('library/watchedFilms');
 // console.log(docRef);
 
 const filmEl = document.querySelector('.card__set');
@@ -26,11 +52,8 @@ filmEl.addEventListener('click', onFilmClick);
 function onFilmClick(e) {
   const filmID = e.target.dataset.attribute;
   // console.log(filmID);
-
   docRef
-    .set({
-      film: filmID,
-    })
+    .update({ id: filmID })
     .then(function () {
       console.log('Document successfully written!');
     })
@@ -50,7 +73,7 @@ function onWatchedElClick() {
     .then(function (doc) {
       if (doc && doc.exists) {
         const myData = doc.data();
-        console.log(myData.film);
+        console.log(myData);
       }
     })
     .catch(function (error) {
