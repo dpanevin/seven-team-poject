@@ -17,3 +17,4 @@ homePageRender(API, markupRender);
 import onSearch from './js/search';
 // MODAL ======================================
 import './js/modal'
+import './js/pagination'
