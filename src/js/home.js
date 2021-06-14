@@ -2,8 +2,9 @@ export default async function homePageRender(API, fn) {
     const movie = new API;
 
     try {
-        const gnr = await movie.fetchGenres();
-        const mvs = await movie.fetchTrendingMovies();
+        const gnr = await movie.fetchGenres();  // жанры
+        const mvs = await movie.fetchTrendingMovies(); // фильмы
+
         fn(mvs); // рендер (колбек)
 
         // массив (карточек) с массивами ID жанров
