@@ -7,9 +7,19 @@ import getRefs from './refs';
 
 const refs = getRefs();
 
+
+
 export default function markupRender(movieObj) {
     const markup = createMarkup(movieObj);
     refs.cardSetEl.innerHTML = markup;  // заполняется список
+
+    const years = document.querySelectorAll('.film__release');
+
+    console.log(years);
+
+    years.forEach(el => {
+      el.textContent = el.textContent.trim().split('').splice(0, 4).join('');
+    })
 }
 
 function createMarkup(cards) {
