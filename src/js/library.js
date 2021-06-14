@@ -38,10 +38,9 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-let firestore = firebase.firestore();
-// console.log(firestore);
-
-const docRef = firestore.doc('library/watchedFilms');
+let db = firebase.firestore();
+// console.log(db);
+const docRef = db.collection('watchedFilms');
 // console.log(docRef);
 
 const filmEl = document.querySelector('.card__set');
@@ -52,8 +51,9 @@ filmEl.addEventListener('click', onFilmClick);
 function onFilmClick(e) {
   const filmID = e.target.dataset.attribute;
   // console.log(filmID);
+
   docRef
-    .update({ id: filmID })
+    .add({ id: filmID })
     .then(function () {
       console.log('Document successfully written!');
     })
@@ -67,16 +67,15 @@ const watchedEl = document.querySelector('.library__btn-watched');
 
 watchedEl.addEventListener('click', onWatchedElClick);
 
+let library = [];
+
 function onWatchedElClick() {
-  docRef
-    .get()
-    .then(function (doc) {
-      if (doc && doc.exists) {
-        const myData = doc.data();
-        console.log(myData);
-      }
-    })
-    .catch(function (error) {
-      console.log('Error adding document: ', error);
+  docRef.get().then(watchedFilms => {
+    watchedFilms.forEach(doc => {
+      const data = doc.data();
+      library.push(data);
+      return library;
     });
+  });
+  console.log(library);
 }
