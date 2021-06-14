@@ -1,18 +1,20 @@
-export default async function homePageRender(API, fn) {
-    const movie = new API;
+export default async function homePageRender(movie, fn) {
 
     try {
-        const gnr = movie.fetchGenres();  // жанры // gnr === allPromises[0]
-        const mvs = movie.fetchTrendingMovies(); // фильмы // mvs === allPromises[1]
-        const allPromises = await Promise.all([gnr, mvs]);
+        const allPromises = await Promise.all([
+            movie.fetchGenres(),    // жанры
+            movie.fetchTrendingMovies() // фильмы
+        ]);
+        const gnr = allPromises[0]; // жанры
+        const mvs = allPromises[1]; // фильмы
 
-        fn(allPromises[1]); // рендер (колбек)
+        fn(mvs); // рендер (колбек)
 
         // массив (карточек) с массивами ID жанров
-        const genreIdsArray = allPromises[1].results.map(card => card.genre_ids);
+        const genreIdsArray = mvs.results.map(card => card.genre_ids);
 
         // массив (карточек) с массивами имен жанров
-        const genreNamesArray = genreIdsArray.map(film => film.map(genre => getNameById(allPromises[0].genres, genre).name));
+        const genreNamesArray = genreIdsArray.map(film => film.map(genre => getNameById(gnr.genres, genre).name));
                 
         // строка жанров
         const genreEl = document.querySelectorAll('.film__genre');
