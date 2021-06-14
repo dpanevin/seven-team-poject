@@ -2,8 +2,8 @@ export default async function homePageRender(API, fn) {
     const movie = new API;
 
     try {
-        const gnr = movie.fetchGenres();  // жанры
-        const mvs = movie.fetchTrendingMovies(); // фильмы
+        const gnr = movie.fetchGenres();  // жанры // gnr === allPromises[0]
+        const mvs = movie.fetchTrendingMovies(); // фильмы // mvs === allPromises[1]
         const allPromises = await Promise.all([gnr, mvs]);
 
         fn(allPromises[1]); // рендер (колбек)
