@@ -1,24 +1,22 @@
-export default function homePageRender(API, fn) {
+export default async function homePageRender(API, fn) {
     const movie = new API;
 
     try {
-        movie.fetchGenres().then(gnr => {
-            movie.fetchTrendingMovies().then(mvs => {
-                fn(mvs); // рендер (колбек)
+        const gnr = await movie.fetchGenres();
+        const mvs = await movie.fetchTrendingMovies();
+        fn(mvs); // рендер (колбек)
 
-                const genreIdsArray = mvs.results.map(card => card.genre_ids);
-                // массив (карточек) с массивами ID жанров
+        // массив (карточек) с массивами ID жанров
+        const genreIdsArray = mvs.results.map(card => card.genre_ids);
 
-                const genreNamesArray = genreIdsArray.map(film => film.map(genre => getNameById(gnr.genres, genre).name));
-                // массив (карточек) с массивами имен жанров
+        // массив (карточек) с массивами имен жанров
+        const genreNamesArray = genreIdsArray.map(film => film.map(genre => getNameById(gnr.genres, genre).name));
                 
-                const genreEl = document.querySelectorAll('.film__genre');
-                // строка жанров
+        // строка жанров
+        const genreEl = document.querySelectorAll('.film__genre');
 
-                genreEl.forEach((el, ind) => el.textContent = genreNamesArray[ind].join(', '));
-                // меняем циферки на кошерные имена
-            });
-        });
+        genreEl.forEach((el, ind) => el.textContent = genreNamesArray[ind].join(', '));
+
     } catch (error) {
         console.log('Error ',error);
     }    
