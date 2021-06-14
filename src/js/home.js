@@ -7,3 +7,5 @@ export default function homePageRender(API, fn) {
         console.log('Error ',error);
     }    
 }
+/* const logo = document.querySelector("logo");
+    logo.addEventListener('click', fetchTrendingMovies) */

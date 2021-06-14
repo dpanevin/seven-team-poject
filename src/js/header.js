@@ -1,4 +1,6 @@
 const refs = {
+    logo:document.querySelector(".logo"),
+    header:document.querySelector(".header"),
     navHome:document.querySelector(".home"),
     navLibr:document.querySelector(".libr"),
     searchLine:document.querySelector(".search__line"),
@@ -11,6 +13,8 @@ function onLibrClick(event) {
     refs.libBtn.classList.remove('visually-hidden');
     refs.navLibr.classList.add('current');
     refs.navHome.classList.remove('current');
+    refs.header.classList.remove('header');
+    refs.header.classList.add('library');
   };
 
   refs.navHome.addEventListener('click', onHomeClick);
@@ -20,5 +24,13 @@ function onLibrClick(event) {
     refs.navLibr.classList.remove('current');
     refs.libBtn.classList.add('visually-hidden');
     refs.searchLine.classList.remove('visually-hidden');
+    refs.header.classList.add('header');
+    refs.header.classList.remove('library');
 }
 
+/* refs.logo.addEventListener('click', onRenderPage);
+
+function onRenderPage(event){
+  event.preventDefault();
+  fetchTrendingMovies
+} */
