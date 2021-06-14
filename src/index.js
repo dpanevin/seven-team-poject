@@ -15,3 +15,5 @@ import './js/header'
 homePageRender(API, markupRender);
 //-------------------------------------------------------------
 import onSearch from './js/search';
+// MODAL ======================================
+import './js/modal'

@@ -1,94 +1,65 @@
 
 import filmcard from './../templates/filmcard-modal.hbs';
 import MoviesApi from './api-service';
-// const movieapi = new MoviesApi();
-
-// async function e() {
-//     const r = await movieapi.fetchMovieById("34335");
-//     const markup = filmcard(r);
-//     modal.innerHTML = markup;
-//     return r;
-// }
-// e();
-
-// (() => {
-//     const refs = {
-//       openModalById: document.querySelector('[data-attribute=id]'),
-//       closeModalBtn: document.querySelector('[data-modal-close]'),
-//       modal: document.querySelector('[data-modal]'),
-//     };
-  
-//     refs.openModalByIdImg.addEventListener('click', toggleModal);
-//     refs.closeModalBtn.addEventListener('click', toggleModal);
-  
-//     async function toggleModal() {
-//         refs.modal.classList.toggle('is-hidden');
-//           const movieapi = new MoviesApi();
-//         async function e() {
-//     const r = await movieapi.fetchMovieById("34335");
-//     const markup = filmcard(r);
-//     refs.modal.insertAdjacentHTML('beforeend', markup);
-//     return r;
-//      }
-//         
-//     }
-// })e();
 
 
-const modal = document.querySelector('.modal');
+//===========================================================
+
 const movieapi = new MoviesApi();
 
-async function e() {
-    const renderId = await movieapi.fetchMovieById("34335");
-    const markup = filmcard(renderId);
-    modal.insertAdjacentHTML('beforeend', markup);;
+
+
+//======================================================
+    const refs1 = {
+      openModalByIdCard: document.querySelector('.card__set'),
+      closeModalBtn: document.querySelector('[data-modal-close]'),
+      modal: document.querySelector('.modal'),
+      backdrop: document.querySelector('.backdrop'),
+        modalCard: document.querySelector('.filmcard'),
+        bodyEl: document.querySelector('body')
+    
+};
+   
+
+     refs1.openModalByIdCard.addEventListener('click', onClickCard);
+
+function onClickCard(evt) {
+
+    const idCard = evt.target.dataset.attribute;
+  
+    refs1.backdrop.classList.toggle('is-hidden');
+    refs1.bodyEl.classList.add('modal-open');
+
+    async function e() {
+        
+      
+    const renderId = await movieapi.fetchMovieById(idCard);
+        // const markup = ;
+       
+    refs1.modal.insertAdjacentHTML('beforeend', filmcard(renderId));
     return renderId;
 }
-e();
-//========================================================
-//
-//     const refs = {
-//       openModalByIdCard: document.querySelector('[data-attribute=id]'),
-//       closeModalBtn: document.querySelector('[data-modal-close]'),
-//       modal: document.querySelector('.modal'),
-//       backdrop: document.querySelector('[data-modal]'),
-//       modalCard = document.querySelector( `.filmcard` );
-//     };
+    e();
 
-//     refs.openModalByIdCard.addEventListener('click', onOpenModalByIdCard);
-//
-//     const movieapi = new MoviesApi();
+}
 
-//             async function e() {
-//             const renderId = await movieapi.fetchMovieById("id");
-//             const markup = filmcard(renderId);
-//             modal.insertAdjacentHTML('beforeend', markup);;
-//             return renderId;
-//            }
-//
-//    function onOpenModalByIdCard(e) {
-//           event.preventDefault();
-//        if( event.target.className === `data-attribute=id` ) {
-//         refs.backdrop.classList.remove('is-hidden');
-//         e();
-//         }
-//    }
-//
-//     refs.closeModalBtn.addEventListener('click', closeModal);
-//
-//     document.addEventListener( `keyup`, event => {
-//         if( event.key === `Escape` ) {
-//             closeModal();
-//         }
-//     } );
+document.addEventListener( `keyup`, e => {
+        if( e.key === `Escape` ) {
+            closeModal();
+        }
+    } );
 
-// modalDiv.addEventListener( `click`, ( event ) => {
-//     if( event.target != modalCard ) {
-//         closeModalWindow();
-//     }
-// } );
+function closeModal() {
+    refs1.bodyEl.classList.remove('modal-open');
+    refs1.backdrop.classList.add('is-hidden');
+        const modalCard = document.querySelector('.filmcard')
 
-// function closeModal () {
-//     refs.backdrop.classList.add('is-hidden');
-//     refs.modal.innerHTML = ''
-// };
+if (modalCard) {  
+    modalCard.remove()  
+}
+    
+     
+};
+
+ refs1.closeModalBtn.addEventListener('click', closeModal);
+closeModal();

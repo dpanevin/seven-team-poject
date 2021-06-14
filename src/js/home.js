@@ -7,4 +7,3 @@ export default function homePageRender(API, fn) {
         console.log('Error ',error);
     }    
 }
-
