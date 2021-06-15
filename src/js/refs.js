@@ -1,5 +1,5 @@
 export default function getRefs() {
-    const refs = {
+  const refs = {
     cardSetEl: document.querySelector('.card__set'),
     searchForm: document.querySelector('.search__form'),
   };
