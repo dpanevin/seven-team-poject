@@ -7,18 +7,19 @@ import getRefs from './refs';
 
 const refs = getRefs();
 
+export default function markupRender(movieObj) {
+  const markup = createMarkup(movieObj);
+  refs.cardSetEl.innerHTML = markup; // заполняется список
 
+  const years = document.querySelectorAll('.film__release');
 
-export default async function markupRender(movieObj) {
-    const markup = await createMarkup(movieObj);
-    refs.cardSetEl.innerHTML = markup;  // заполняется список
+  // console.log(years);
 
-    const years = document.querySelectorAll('.film__release');
-
-
-    years.forEach(el => {
-      el.textContent = el.textContent.trim().split('').splice(0, 4).join('');
-    })
-  refs.cardSetEl.addEventListener('click', onClickCard);
+  years.forEach(el => {
+    el.textContent = el.textContent.trim().split('').splice(0, 4).join('');
+  });
 }
 
+function createMarkup(cards) {
+  return cardMarkupTpl(cards); // создается разметка
+}
