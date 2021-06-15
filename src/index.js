@@ -18,6 +18,8 @@ homePageRender(movieAPI, markupRender);
 
 //-------------------------------------------------------------
 import onSearch from './js/search';
-
-import './js/library';
+// MODAL ======================================
 import './js/modal'
+const moviesApi = new API();
+import './js/pagination'
+import './js/library';

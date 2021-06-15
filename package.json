@@ -27,7 +27,8 @@
   },
   "dependencies": {
     "@pnotify/core": "^5.2.0",
-    "firebase": "^8.6.7",
-    "spin.js": "^4.1.0"
+    "spin.js": "^4.1.0",
+    "tui-pagination": "^3.4.0"
+    "firebase": "^8.6.7"
   }
 }
