@@ -3,6 +3,7 @@ const refs = {
     navLibr:document.querySelector(".libr"),
     searchLine:document.querySelector(".search__line"),
     libBtn:document.querySelector(".library__btn"),
+    logo:document.querySelector(".logo"),
 }
 refs.navLibr.addEventListener('click', onLibrClick);
 function onLibrClick(event) {
@@ -22,3 +23,11 @@ function onLibrClick(event) {
     refs.searchLine.classList.remove('visually-hidden');
 }
 
+refs.logo.addEventListener('click', onRenderPage);
+
+function onRenderPage(){
+  refs.navHome.classList.add('current');
+  refs.navLibr.classList.remove('current');
+  refs.libBtn.classList.add('visually-hidden');
+  refs.searchLine.classList.remove('visually-hidden');
+}
