@@ -1,5 +1,5 @@
 export default async function homePageRender(API, fn) {
-    const movie = new API;
+    const movie = API;
 
     try {
         const allPromises = await Promise.all([

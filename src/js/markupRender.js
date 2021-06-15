@@ -1,4 +1,4 @@
-import cardMarkupTpl from '../templates/card-template.hbs'; // забираем шаблон карточки
+import createMarkup from '../templates/card-template.hbs'; // забираем шаблон карточки
 import onClickCard from './modal'
 import getRefs from './refs';
 // const refs = {
@@ -15,7 +15,6 @@ export default async function markupRender(movieObj) {
 
     const years = document.querySelectorAll('.film__release');
 
-    console.log(years);
 
     years.forEach(el => {
       el.textContent = el.textContent.trim().split('').splice(0, 4).join('');
@@ -23,6 +22,3 @@ export default async function markupRender(movieObj) {
   refs.cardSetEl.addEventListener('click', onClickCard);
 }
 
-function createMarkup(cards) {
-    return cardMarkupTpl(cards);  // создается разметка
-}
