@@ -67,15 +67,11 @@ const watchedEl = document.querySelector('.library__btn-watched');
 
 watchedEl.addEventListener('click', onWatchedElClick);
 
-let library = [];
-
 function onWatchedElClick() {
   docRef.get().then(watchedFilms => {
     watchedFilms.forEach(doc => {
       const data = doc.data();
-      library.push(data);
-      return library;
+      console.log(data);
     });
   });
-  console.log(library);
 }
