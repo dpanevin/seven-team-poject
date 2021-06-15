@@ -1,6 +1,6 @@
 import MoviesApi from './api-service';
 
-import markupRender from './markupRender'
+import createMarkup from './markupRender'
 // import { alert } from '@pnotify/core';
 // import '@pnotify/core/dist/PNotify.css';
 // import '@pnotify/core/dist/BrightTheme.css';
@@ -24,17 +24,20 @@ export default function onSearch(e) {
 
     try {
         if (filmsApi.query === '') {
-            clearMarkup();
-            filmsApi.fetchTrendingMovies().then(movies => {markupRender(movies);
+            // clearMarkup();
+            filmsApi.fetchTrendingMovies().then(movies => {
+                createMarkup(movies);
             });
         } else {
-            filmsApi.fetchMoviesByQuery().then(movies => {markupRender(movies);
+            filmsApi.fetchMoviesByQuery().then(movies => {createMarkup(movies);
             });
         }
     } catch (error) {
         console.log(error);
     }
 };
+
+
 
 function clearMarkup() {
     refs.cardSetEl.innerHTML = '';
