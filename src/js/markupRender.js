@@ -20,6 +20,3 @@ export default function markupRender(movieObj) {
   });
 }
 
-function createMarkup(cards) {
-  return cardMarkupTpl(cards); // создается разметка
-}
