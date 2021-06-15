@@ -1,4 +1,5 @@
-export default async function homePageRender(movie, fn) {
+export default async function homePageRender(API, fn) {
+    const movie = new API;
 
     try {
         const allPromises = await Promise.all([
@@ -21,6 +22,7 @@ export default async function homePageRender(movie, fn) {
 
         genreEl.forEach((el, ind) => el.textContent = genreNamesArray[ind].join(', '));
 
+        
     } catch (error) {
         console.log('Error ',error);
     }    
