@@ -17,4 +17,5 @@ homePageRender(API, markupRender);
 import onSearch from './js/search';
 // MODAL ======================================
 import './js/modal'
+const moviesApi = new API();
 import './js/pagination'

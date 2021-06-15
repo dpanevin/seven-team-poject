@@ -1,11 +1,12 @@
 import Pagination from 'tui-pagination';
 import arrow from '../images/sprite.svg'
-import MoviesApi from './api-service';
+// import MoviesApi from './api-service';
 
-const moviesApi = new MoviesApi();
+// const moviesApi = new MoviesApi();
 const refs = {
     paginationEl: document.getElementById('tui-pagination-container')
 }
+
 
 const pageOptions = { // below default value of options
      totalItems: 800,

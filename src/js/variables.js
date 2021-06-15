@@ -1,1 +1,1 @@
-let totalResults;
+export default ;
