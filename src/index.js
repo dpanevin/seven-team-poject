@@ -19,3 +19,15 @@ homePageRender(API, markupRender);
 import onSearch from './js/search';
 // MODAL ======================================
 import './js/modal'
+import getRefs from './js/refs';
+//const movieapi = new MoviesApi();
+const refs = getRefs();
+
+// Listeners =================================
+// refs.cardSetEl.addEventListener('click', onClickCard);
+// refs.closeModalBtn.addEventListener('click', closeModal);
+// document.addEventListener( `keyup`, e => {
+//         if( e.key === `Escape` ) {
+//             closeModal();
+//         }
+//     } );

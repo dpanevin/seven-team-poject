@@ -1,3 +1,5 @@
+
+
 export default async function homePageRender(API, fn) {
     const movie = new API;
 
@@ -19,6 +21,7 @@ export default async function homePageRender(API, fn) {
 
         genreEl.forEach((el, ind) => el.textContent = genreNamesArray[ind].join(', '));
 
+        
     } catch (error) {
         console.log('Error ',error);
     }    
