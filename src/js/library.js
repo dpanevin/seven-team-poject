@@ -43,35 +43,35 @@ let db = firebase.firestore();
 const docRef = db.collection('watchedFilms');
 // console.log(docRef);
 
-const filmEl = document.querySelector('.card__set');
-// console.log(filmEl);
+// const filmEl = document.querySelector('.card__set');
+// // console.log(filmEl);
 
-filmEl.addEventListener('click', onFilmClick);
+// filmEl.addEventListener('click', onFilmClick);
 
-function onFilmClick(e) {
-  const filmID = e.target.dataset.attribute;
-  // console.log(filmID);
+// function onFilmClick(e) {
+//   const filmID = e.target.dataset.attribute;
+//   console.log(filmID);
 
-  docRef
-    .add({ id: filmID })
-    .then(function () {
-      console.log('Document successfully written!');
-    })
-    .catch(function (error) {
-      console.log('Error adding document: ', error);
-    });
-}
+//   docRef
+//     .add({ id: filmID })
+//     .then(function () {
+//       console.log('Document successfully written!');
+//     })
+//     .catch(function (error) {
+//       console.log('Error adding document: ', error);
+//     });
+// }
 
-const watchedEl = document.querySelector('.library__btn-watched');
-// console.log(watchedEl);
+// const watchedEl = document.querySelector('.library__btn-watched');
+// // console.log(watchedEl);
 
-watchedEl.addEventListener('click', onWatchedElClick);
+// watchedEl.addEventListener('click', onWatchedElClick);
 
-function onWatchedElClick() {
-  docRef.get().then(watchedFilms => {
-    watchedFilms.forEach(doc => {
-      const data = doc.data();
-      console.log(data);
-    });
-  });
-}
+// function onWatchedElClick() {
+//   docRef.get().then(watchedFilms => {
+//     watchedFilms.forEach(doc => {
+//       const data = doc.data();
+//       console.log(data);
+//     });
+//   });
+// }
