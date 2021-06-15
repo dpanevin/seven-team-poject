@@ -15,7 +15,6 @@ import './js/pagination';
 
 homePageRender(movieAPI, markupRender);
 
-import onSearch from './js/search';
 import './js/modal'
 import getRefs from './js/refs';
 
