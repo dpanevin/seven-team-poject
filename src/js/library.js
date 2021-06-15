@@ -1,9 +1,6 @@
 import firebase from 'firebase/app';
-import 'firebase/firestore';
 import 'firebase/auth';
-import 'firebase/database';
-import 'firebase/messaging';
-import 'firebase/storage';
+import { docWatched, docQueued } from './modal';
 
 document.addEventListener('DOMContentLoaded', event => {
   const app = firebase.app();
@@ -22,56 +19,34 @@ function googleLogin() {
     .then(result => {
       const user = result.user;
       loginEl.innerText = `Вы вошли как ${user.displayName}`;
-      console.log(user);
+      // console.log(user);
     })
     .catch(console.log);
 }
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyDdl0b3K_4fjMGLjZ2-JHtxj81J32at2gE',
-  authDomain: 'seven-team-project.firebaseapp.com',
-  projectId: 'seven-team-project',
-  storageBucket: 'seven-team-project.appspot.com',
-  messagingSenderId: '43069771775',
-  appId: '1:43069771775:web:2d2b8e1e8f2b325d7de1ca',
-};
+const watchedEl = document.querySelector('.library__btn-watched');
+// console.log(watchedEl);
 
-firebase.initializeApp(firebaseConfig);
+watchedEl.addEventListener('click', onWatchedElClick);
 
-let db = firebase.firestore();
-// console.log(db);
-const docRef = db.collection('watchedFilms');
-// console.log(docRef);
+function onWatchedElClick() {
+  docWatched.get().then(watchedFilms => {
+    watchedFilms.forEach(doc => {
+      const data = doc.data();
+      console.log(data);
+    });
+  });
+}
 
-// const filmEl = document.querySelector('.card__set');
-// // console.log(filmEl);
+const queuedEl = document.querySelector('.library__btn-queue');
+// console.log(queuedEl);
+queuedEl.addEventListener('click', onQueuedElClick);
 
-// filmEl.addEventListener('click', onFilmClick);
-
-// function onFilmClick(e) {
-//   const filmID = e.target.dataset.attribute;
-//   console.log(filmID);
-
-//   docRef
-//     .add({ id: filmID })
-//     .then(function () {
-//       console.log('Document successfully written!');
-//     })
-//     .catch(function (error) {
-//       console.log('Error adding document: ', error);
-//     });
-// }
-
-// const watchedEl = document.querySelector('.library__btn-watched');
-// // console.log(watchedEl);
-
-// watchedEl.addEventListener('click', onWatchedElClick);
-
-// function onWatchedElClick() {
-//   docRef.get().then(watchedFilms => {
-//     watchedFilms.forEach(doc => {
-//       const data = doc.data();
-//       console.log(data);
-//     });
-//   });
-// }
+function onQueuedElClick() {
+  docQueued.get().then(queuedFilms => {
+    queuedFilms.forEach(doc => {
+      const data = doc.data();
+      console.log(data);
+    });
+  });
+}

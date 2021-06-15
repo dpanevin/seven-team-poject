@@ -1,6 +1,28 @@
 import filmcard from './../templates/filmcard-modal.hbs';
 import MoviesApi from './api-service';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/database';
+import 'firebase/messaging';
+import 'firebase/storage';
 
+const firebaseConfig = {
+  apiKey: 'AIzaSyDdl0b3K_4fjMGLjZ2-JHtxj81J32at2gE',
+  authDomain: 'seven-team-project.firebaseapp.com',
+  projectId: 'seven-team-project',
+  storageBucket: 'seven-team-project.appspot.com',
+  messagingSenderId: '43069771775',
+  appId: '1:43069771775:web:2d2b8e1e8f2b325d7de1ca',
+};
+
+firebase.initializeApp(firebaseConfig);
+
+let db = firebase.firestore();
+// console.log(db);
+export const docWatched = db.collection('watchedFilms');
+// console.log(docWatched);
+export const docQueued = db.collection('queuedFilms');
+// console.log(docQueued);
 //===========================================================
 
 const movieapi = new MoviesApi();
@@ -30,10 +52,62 @@ function onClickCard(evt) {
     refs1.modal.insertAdjacentHTML('beforeend', filmcard(renderId));
     return renderId;
   }
-  e().then(response => {
-    const btnEl = document.querySelector('.btnwatched');
-    console.log(btnEl);
-  });
+  e()
+    .then(response => {
+      const watchedEl = document.querySelector('.btnwatched');
+      //   console.log(watchedEl);
+      const queuedEl = document.querySelector('.btnqueue');
+      //   console.log(queuedEl);
+      const idEl = document.querySelector('.filmcard-image').dataset.attribute;
+      //   console.log(idEl);
+      const srcEl = document.querySelector('.filmcard-image').src;
+      //   console.log(srcEl);
+      const nameEl = document.querySelector('.filmcard-image').alt;
+      //   console.log(nameEl);
+      const dateEl = document.querySelector('.filmcard-image').dataset.date.slice(0, 4);
+      //   console.log(dataEl);
+      const voteEl = document.querySelector('.filmcard-image').dataset.vote;
+      //   console.log(voteEl);
+      const genreEl = document.querySelector('.filmcard-image').dataset.genre;
+      // console.log(genreEl);
+      watchedEl.addEventListener('click', onWatchedElClick);
+      function onWatchedElClick(e) {
+        docWatched
+          .add({
+            id: idEl,
+            src: srcEl,
+            name: nameEl,
+            date: dateEl,
+            vote: voteEl,
+            genre: genreEl,
+          })
+          .then(function () {
+            console.log('Document successfully written!');
+          })
+          .catch(function (error) {
+            console.log('Error adding document: ', error);
+          });
+      }
+      queuedEl.addEventListener('click', onQueuedElClick);
+      function onQueuedElClick(e) {
+        docQueued
+          .add({
+            id: idEl,
+            src: srcEl,
+            name: nameEl,
+            date: dateEl,
+            vote: voteEl,
+            genre: genreEl,
+          })
+          .then(function () {
+            console.log('Document successfully written!');
+          })
+          .catch(function (error) {
+            console.log('Error adding document: ', error);
+          });
+      }
+    })
+    .catch(error => console.log(error));
 }
 
 document.addEventListener(`keyup`, e => {
