@@ -1,5 +1,5 @@
-import cardMarkupTpl from '../templates/card-template.hbs'; // забираем шаблон карточки
-
+import createMarkup from '../templates/card-template.hbs'; // забираем шаблон карточки
+import onClickCard from './modal'
 import getRefs from './refs';
 // const refs = {
 //     cardSetEl: document.querySelector('.card__set')  // список для рендеринга
