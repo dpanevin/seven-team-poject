@@ -72,14 +72,14 @@ function onClickCard(evt) {
       // console.log(genreEl);
       watchedEl.addEventListener('click', onWatchedElClick);
 
-      let toUpdateWatched = 1;
-      let toUpdateQueued = 1;
+      let noUpdateWatched = null;
+      let noUpdateQueued = null;
 
       docWatched.get().then(watchedFilms => {
         watchedFilms.forEach(doc => {
           const firebaseId = doc.data().id;
           if (idEl === firebaseId) {
-            toUpdateWatched = 0;
+            noUpdateWatched = 1;
           }
         });
       });
@@ -88,15 +88,20 @@ function onClickCard(evt) {
         queuedFilms.forEach(doc => {
           const firebaseId = doc.data().id;
           if (idEl === firebaseId) {
-            toUpdateQueued = 0;
+            noUpdateQueued = 1;
           }
         });
       });
 
       function onWatchedElClick(e) {
-        if (toUpdateWatched === 0) {
+        if (noUpdateWatched) {
           window.alert(
-            'The film you are trying to add is already in the "WATCHED" list and won`t be added',
+            'The film you are trying to add is already in the "WATCHED" list and can`t be added to library twice',
+          );
+          return;
+        } else if (noUpdateQueued) {
+          window.alert(
+            'The film you are trying to add is already in the "QUEUED" list and can`t be added to library twice',
           );
           return;
         } else {
@@ -121,9 +126,14 @@ function onClickCard(evt) {
 
       queuedEl.addEventListener('click', onQueuedElClick);
       function onQueuedElClick(e) {
-        if (toUpdateQueued === 0) {
+        if (noUpdateQueued) {
           window.alert(
-            'The film you are trying to add is already in the "WATCHED" list and won`t be added',
+            'The film you are trying to add is already in the "QUEUED" list and can`t be added to library twice',
+          );
+          return;
+        } else if (noUpdateWatched) {
+          window.alert(
+            'The film you are trying to add is already in the "WATCHED" list and can`t be added to library twice',
           );
           return;
         } else {
