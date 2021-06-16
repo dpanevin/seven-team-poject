@@ -21,8 +21,9 @@ function onLibrClick(event) {
   refs.carSetEl.innerHTML = '';
 }
 
-refs.navHome.addEventListener('click', onHomeClick);
-function onHomeClick(event) {
+refs.logo.addEventListener('click', onRenderPage);
+
+function onRenderPage(){
   event.preventDefault();
   refs.navHome.classList.add('current');
   refs.navLibr.classList.remove('current');
