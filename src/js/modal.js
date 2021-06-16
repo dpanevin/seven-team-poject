@@ -116,6 +116,7 @@ function onClickCard(evt) {
               console.log('Error adding document: ', error);
             });
         }
+        setTimeout(closeModal, 1000);
       }
 
       queuedEl.addEventListener('click', onQueuedElClick);
@@ -142,6 +143,7 @@ function onClickCard(evt) {
               console.log('Error adding document: ', error);
             });
         }
+        setTimeout(closeModal, 1000);
       }
     })
     .catch(error => console.log(error));
@@ -161,7 +163,6 @@ function closeModal() {
   if (modalCard) {
     modalCard.remove();
   }
-  modalOpen = null;
 }
 
 refs1.closeModalBtn.addEventListener('click', closeModal);
