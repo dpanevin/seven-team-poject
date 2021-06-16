@@ -20,7 +20,7 @@
       <div class="container">
         <nav class="navigation__header">
           <div class="navigation">
-            <a class="logo" href="#">
+            <a class="logo render" href="#">
               <svg class="header__logo">
                 <use href="./images/sprite.svg#icon-film"></use>
               </svg>
@@ -30,11 +30,12 @@
             <ul class="navigation__list">
               <li class="navigation__item home current">HOME</li>
               <li class="navigation__item libr">MY LIBRARY</li>
+              <li class="navigation__item auth">LOGIN</li>
             </ul>
           </div>
 <div class="library__btn visually-hidden">
-<button class="library__btn-watched ">Watched</button>
-<button class="library__btn-queue ">queue</button>
+<button class="library__btn-watched">Watched</button>
+<button class="library__btn-queue">queue</button>
 </div>
   <div class="search__line">
       <form class="search__form" id="search-form">
@@ -60,6 +61,8 @@
         <ul class="card__set">
           <!--тут будут карточки с фильмами -->          
         </ul>
+
+        <div id="tui-pagination-container" class="tui-pagination"></div>
       </div>
     </main>
     
@@ -68,8 +71,13 @@
         <p class="footer__desc">
           <span class="footer__copyright">&copy 2020 | All Rights Reserved |&nbsp;</span><span class="footer__caption">Developed with<svg class="footer__icon-heart" width="14px" height="13px">
             <use href="./images/sprite.svg#heart"></use>
-          </svg>by&nbsp;<a class="footer__caption-link" href="#">GoIT Students</a></span>
+          </svg><a class="footer__caption-link" href="#">GoIT Students</a></span>
         </p>
+      </div>
+      <div class="team__card is-hidden">
+        <div class="team__modal">
+        <ul class="team"></ul>
+        </div>
       </div>
     </footer>
 

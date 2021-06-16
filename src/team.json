@@ -1,0 +1,38 @@
+[
+    {
+      "name": "Денис Паневин",
+      "position": "Team Lead",
+      "image": "https://i.ibb.co/FhGwYF7/denis-panevin.jpg",
+      "link": "https://github.com/panamasumy"
+    },
+    {
+        "name": "Катя Демченко",
+        "position": "Scrum Master",
+        "image": "https://i.ibb.co/f8jG2MF/kate-demchenko.jpg",
+        "link": "https://github.com/Kateryna993"
+      },
+      {
+        "name": "Александр Симаков",
+        "position": "Developer",
+        "image": "https://i.ibb.co/X5YM7RK/alexander-simakov.jpg",
+        "link": "https://github.com/Sima7777"
+      },{
+        "name": "Игорь Андреев",
+        "position": "Developer",
+        "image":"https://i.ibb.co/V2fDMFJ/igor-andrieiev.jpg",
+        "link": "https://github.com/IhorAndrieiev"
+      },
+      {
+        "name": "Иванка Буравецка",
+        "position": "Developer",
+        "image": "https://i.ibb.co/qYvRSv0/ivanka-buravetska.jpg" ,
+        "link": "https://github.com/Ivanka1991"
+      },
+      {
+        "name": "Александр Третяк",
+        "position": "Developer",
+        "image": "https://i.ibb.co/gD2SQh7/oleksandr-tretiak.jpg",
+        "link": "https://github.com/TretiakOleksandr"
+      }
+
+]

@@ -5,6 +5,7 @@ export default class MoviesApi {
     constructor() {
         this.searchQuery = '';
         this.page = 1;
+        this.totalResults = null;
     }
 
     async fetchTrendingMovies() {
@@ -12,7 +13,8 @@ export default class MoviesApi {
 
         try {
             const response = await fetch(url);
-            const movies = response.json();
+            const movies = await response.json();
+            this.totalResults = movies.total_results;
             return movies;
         } catch (error) {
             console.log(error)

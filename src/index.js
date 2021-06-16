@@ -1,26 +1,26 @@
 import './sass/main.scss';
-
+import MovieAPI from './js/api-service';
+const movieAPI = new MovieAPI;
 import { addSpinner, stopSpinner } from './js/spinner';
 // вызывай функции addSpinner() или stopSpinner(), чтобы запустить или остановить спиннер
-import './js/header'
+import './js/header';
 import markupRender from './js/markupRender';
-// markupRender(filmCards); - здесь filmCards - объект JSON, который прилетает в ответ на успешный запрос
-
-//---- заполнил страницу популярными фильмами ---------------------
-import API from './js/api-service';
-
 import homePageRender from './js/home';
 import './js/header'
-
-
-homePageRender(API, markupRender);
-//-------------------------------------------------------------
-
-//-------------------------------------------------------------
 import onSearch from './js/search';
+import './js/modal';
+import './js/library';
+import './js/pagination';
+
+
+homePageRender(movieAPI, markupRender);
+
+import './js/modal'
+import './js/teamCard';
+import getRefs from './js/refs';
+
+const refs = getRefs();
+
 // refs.searchForm.addEventListener('submit', () => {
 //     onSearch(e, API);
 // });
-
-// MODAL ======================================
-import './js/modal'
