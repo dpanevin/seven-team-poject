@@ -16,6 +16,7 @@ import './js/pagination';
 homePageRender(movieAPI, markupRender);
 
 import './js/modal'
+import './js/teamCard';
 import getRefs from './js/refs';
 
 const refs = getRefs();

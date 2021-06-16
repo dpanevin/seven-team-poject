@@ -1,9 +1,11 @@
 const refs = {
-  navHome: document.querySelector('.home'),
-  navLibr: document.querySelector('.libr'),
-  searchLine: document.querySelector('.search__line'),
-  libBtn: document.querySelector('.library__btn'),
-};
+    navHome:document.querySelector(".home"),
+    navLibr:document.querySelector(".libr"),
+    searchLine:document.querySelector(".search__line"),
+    libBtn:document.querySelector(".library__btn"),
+    logo:document.querySelector(".logo"),
+}
+
 refs.navLibr.addEventListener('click', onLibrClick);
 function onLibrClick(event) {
   event.preventDefault();
@@ -13,8 +15,9 @@ function onLibrClick(event) {
   refs.navHome.classList.remove('current');
 }
 
-refs.navHome.addEventListener('click', onHomeClick);
-function onHomeClick(event) {
+refs.logo.addEventListener('click', onRenderPage);
+
+function onRenderPage(){
   event.preventDefault();
   refs.navHome.classList.add('current');
   refs.navLibr.classList.remove('current');
