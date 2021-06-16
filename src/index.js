@@ -1,4 +1,5 @@
 import './sass/main.scss';
+
 import { addSpinner, stopSpinner } from './js/spinner';
 // вызывай функции addSpinner() или stopSpinner(), чтобы запустить или остановить спиннер
 import './js/header'
@@ -17,5 +18,9 @@ homePageRender(API, markupRender);
 
 //-------------------------------------------------------------
 import onSearch from './js/search';
+// refs.searchForm.addEventListener('submit', () => {
+//     onSearch(e, API);
+// });
+
 // MODAL ======================================
 import './js/modal'

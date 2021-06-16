@@ -1,9 +1,9 @@
 import MoviesApi from './api-service';
 
 import createMarkup from './markupRender'
-// import { alert } from '@pnotify/core';
-// import '@pnotify/core/dist/PNotify.css';
-// import '@pnotify/core/dist/BrightTheme.css';
+import { alert } from '@pnotify/core';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
 
 import getRefs from './refs';
 
@@ -24,11 +24,13 @@ export default function onSearch(e) {
 
     try {
         if (filmsApi.query === '') {
-            // clearMarkup();
+            clearMarkup();
+            onFetchError();
             filmsApi.fetchTrendingMovies().then(movies => {
                 createMarkup(movies);
             });
-        } else {
+        } 
+        else {
             filmsApi.fetchMoviesByQuery().then(movies => {createMarkup(movies);
             });
         }
@@ -37,11 +39,14 @@ export default function onSearch(e) {
     }
 };
 
-
-
 function clearMarkup() {
     refs.cardSetEl.innerHTML = '';
 };
 
+function onFetchError() {
+    alert({
+      text: 'Search field is empty. Please enter the movie name!',
+    });
+}
  
 refs.searchForm.addEventListener('submit', onSearch);
