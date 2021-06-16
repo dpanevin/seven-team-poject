@@ -10,7 +10,7 @@ const refs = {
   searchLine: document.querySelector('.search__line'),
   libBtn: document.querySelector('.library__btn'),
   carSetEl: document.querySelector('.card__set'),
-  logoEl: document.querySelector(".logo")
+  logoEl: document.querySelector('.logo'),
 };
 refs.navLibr.addEventListener('click', onLibrClick);
 function onLibrClick(event) {
@@ -24,7 +24,7 @@ function onLibrClick(event) {
 
 refs.logoEl.addEventListener('click', onRenderPage);
 
-function onRenderPage(){
+function onRenderPage() {
   event.preventDefault();
   refs.navHome.classList.add('current');
   refs.navLibr.classList.remove('current');

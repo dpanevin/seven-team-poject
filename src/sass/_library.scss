@@ -1,42 +1,41 @@
-.library{
-    height: 230px;
-    display: flex;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+.library {
+  height: 230px;
+  display: flex;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url('../images/library_img/library_mobile@1.jpg');
   background-size: cover;
 }
 
-.library__btn{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-} 
+.library__btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
- .library__btn-watched,
-.library__btn-queue{
-    background: transparent;
-    text-transform: uppercase;
-    border: 1px solid $text-color;
-    border-radius: 5px;
-    color: $text-color;
-    width: 130px;
-    height: 44px;
-    cursor: pointer;
+.library__btn-watched,
+.library__btn-queue {
+  background: transparent;
+  text-transform: uppercase;
+  border: 1px solid $text-color;
+  border-radius: 5px;
+  color: $text-color;
+  width: 130px;
+  height: 44px;
+  cursor: pointer;
 }
-.library__btn-watched:focus,
-.library__btn-queue:focus{
-    background: $accent-color;
-    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-    border: none;
+.library__btn-clicked {
+  background: $accent-color;
+  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+  border: none;
 }
-@media screen and (min-width: $tablet){
-    .library__btn{
+@media screen and (min-width: $tablet) {
+  .library__btn {
     justify-content: center;
-}
+  }
 
-.library__btn-watched{
+  .library__btn-watched {
     margin-right: 15px;
-}
+  }
 }
 @media screen and (min-device-pixel-ratio: 2) and (min-width: $mobile),
   screen and (min-resolution: 192dpi) and (min-width: $mobile),

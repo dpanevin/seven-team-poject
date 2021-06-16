@@ -2,6 +2,9 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import { docWatched, docQueued } from './modal';
 
+const homeEl = document.querySelector('.libr');
+homeEl.addEventListener('click', onWatchedElClick);
+
 document.addEventListener('DOMContentLoaded', event => {
   const app = firebase.app();
   // console.log(app);
@@ -32,6 +35,8 @@ watchedEl.addEventListener('click', onWatchedElClick);
 const cardSetEl = document.querySelector('.card__set');
 
 function onWatchedElClick() {
+  watchedEl.classList.add('library__btn-clicked');
+  queuedEl.classList.remove('library__btn-clicked');
   cardSetEl.innerHTML = '';
   docWatched.get().then(watchedFilms => {
     watchedFilms.forEach(doc => {
@@ -90,6 +95,8 @@ const queuedEl = document.querySelector('.library__btn-queue');
 queuedEl.addEventListener('click', onQueuedElClick);
 
 function onQueuedElClick() {
+  queuedEl.classList.add('library__btn-clicked');
+  watchedEl.classList.remove('library__btn-clicked');
   cardSetEl.innerHTML = '';
   docQueued.get().then(queuedFilms => {
     queuedFilms.forEach(doc => {
