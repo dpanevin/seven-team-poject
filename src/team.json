@@ -3,36 +3,42 @@
       "name": "Денис Паневин",
       "position": "Team Lead",
       "image": "https://i.ibb.co/FhGwYF7/denis-panevin.jpg",
-      "link": "https://github.com/panamasumy"
+      "link-gitHub": "https://github.com/panamasumy",
+      "link-linkedIn":"https://www.linkedin.com/in/denis-panevin-102112215/"
     },
     {
         "name": "Катя Демченко",
         "position": "Scrum Master",
         "image": "https://i.ibb.co/f8jG2MF/kate-demchenko.jpg",
-        "link": "https://github.com/Kateryna993"
+        "link": "https://github.com/Kateryna993",
+        "link-linkedIn":"https://www.linkedin.com/in/kate-demchenko-14890bb9/"
       },
       {
         "name": "Александр Симаков",
         "position": "Developer",
         "image": "https://i.ibb.co/X5YM7RK/alexander-simakov.jpg",
-        "link": "https://github.com/Sima7777"
+        "link": "https://github.com/Sima7777",
+        "link-linkedIn":"https://www.linkedin.com/in/oleksandr-simakov/"
       },{
         "name": "Игорь Андреев",
         "position": "Developer",
         "image":"https://i.ibb.co/V2fDMFJ/igor-andrieiev.jpg",
-        "link": "https://github.com/IhorAndrieiev"
+        "link": "https://github.com/IhorAndrieiev",
+        "link-linkedIn":""
       },
       {
         "name": "Иванка Буравецка",
         "position": "Developer",
         "image": "https://i.ibb.co/qYvRSv0/ivanka-buravetska.jpg" ,
-        "link": "https://github.com/Ivanka1991"
+        "link": "https://github.com/Ivanka1991",
+        "link-linkedIn":"https://www.linkedin.com/in/ivanna-buravetska-5650ab153/"
       },
       {
         "name": "Александр Третяк",
         "position": "Developer",
         "image": "https://i.ibb.co/gD2SQh7/oleksandr-tretiak.jpg",
-        "link": "https://github.com/TretiakOleksandr"
+        "link": "https://github.com/TretiakOleksandr",
+        "link-linkedIn":"https://www.linkedin.com/in/oleksandr-tretiak-356138215/"
       }
 
 ]
