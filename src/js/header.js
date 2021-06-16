@@ -32,3 +32,5 @@ function onRenderPage() {
   refs.searchLine.classList.remove('visually-hidden');
   homePageRender(movieAPI, markupRender);
 }
+
+refs.navHome.addEventListener('click', onRenderPage);

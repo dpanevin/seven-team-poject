@@ -2,9 +2,6 @@ import filmcard from './../templates/filmcard-modal.hbs';
 import MoviesApi from './api-service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import 'firebase/database';
-import 'firebase/messaging';
-import 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDdl0b3K_4fjMGLjZ2-JHtxj81J32at2gE',
@@ -39,6 +36,8 @@ const refs1 = {
 
 refs1.openModalByIdCard.addEventListener('click', onClickCard);
 
+let modalOpen = null;
+
 function onClickCard(evt) {
   const idCard = evt.target.dataset.attribute;
 
@@ -52,6 +51,7 @@ function onClickCard(evt) {
     refs1.modal.insertAdjacentHTML('beforeend', filmcard(renderId));
     return renderId;
   }
+
   e()
     .then(response => {
       const watchedEl = document.querySelector('.btnwatched');
@@ -59,7 +59,7 @@ function onClickCard(evt) {
       const queuedEl = document.querySelector('.btnqueue');
       //   console.log(queuedEl);
       const idEl = document.querySelector('.filmcard-image').dataset.attribute;
-      //   console.log(idEl);
+      // console.log(idEl);
       const srcEl = document.querySelector('.filmcard-image').src;
       //   console.log(srcEl);
       const nameEl = document.querySelector('.filmcard-image').alt;
@@ -71,40 +71,77 @@ function onClickCard(evt) {
       const genreEl = document.querySelector('.filmcard-image').dataset.genre;
       // console.log(genreEl);
       watchedEl.addEventListener('click', onWatchedElClick);
+
+      let toUpdateWatched = 1;
+      let toUpdateQueued = 1;
+
+      docWatched.get().then(watchedFilms => {
+        watchedFilms.forEach(doc => {
+          const firebaseId = doc.data().id;
+          if (idEl === firebaseId) {
+            toUpdateWatched = 0;
+          }
+        });
+      });
+
+      docQueued.get().then(queuedFilms => {
+        queuedFilms.forEach(doc => {
+          const firebaseId = doc.data().id;
+          if (idEl === firebaseId) {
+            toUpdateQueued = 0;
+          }
+        });
+      });
+
       function onWatchedElClick(e) {
-        docWatched
-          .add({
-            id: idEl,
-            src: srcEl,
-            name: nameEl,
-            date: dateEl,
-            vote: voteEl,
-            genre: genreEl,
-          })
-          .then(function () {
-            console.log('Document successfully written!');
-          })
-          .catch(function (error) {
-            console.log('Error adding document: ', error);
-          });
+        if (toUpdateWatched === 0) {
+          window.alert(
+            'The film you are trying to add is already in the "WATCHED" list and won`t be added',
+          );
+          return;
+        } else {
+          docWatched
+            .add({
+              id: idEl,
+              src: srcEl,
+              name: nameEl,
+              date: dateEl,
+              vote: voteEl,
+              genre: genreEl,
+            })
+            .then(function () {
+              console.log('Document successfully written!');
+            })
+            .catch(function (error) {
+              console.log('Error adding document: ', error);
+            });
+        }
       }
+
       queuedEl.addEventListener('click', onQueuedElClick);
       function onQueuedElClick(e) {
-        docQueued
-          .add({
-            id: idEl,
-            src: srcEl,
-            name: nameEl,
-            date: dateEl,
-            vote: voteEl,
-            genre: genreEl,
-          })
-          .then(function () {
-            console.log('Document successfully written!');
-          })
-          .catch(function (error) {
-            console.log('Error adding document: ', error);
-          });
+        if (toUpdateQueued === 0) {
+          window.alert(
+            'The film you are trying to add is already in the "WATCHED" list and won`t be added',
+          );
+          return;
+        } else {
+          docQueued
+            .add({
+              id: idEl,
+              src: srcEl,
+              name: nameEl,
+              date: dateEl,
+              vote: voteEl,
+              genre: genreEl,
+            })
+            .then(function () {
+              console.log('Document successfully written!');
+            })
+            .catch(function (error) {
+              console.log('Error adding document: ', error);
+            });
+        }
       }
     })
     .catch(error => console.log(error));
@@ -124,6 +161,7 @@ function closeModal() {
   if (modalCard) {
     modalCard.remove();
   }
+  modalOpen = null;
 }
 
 refs1.closeModalBtn.addEventListener('click', closeModal);
