@@ -21,3 +21,6 @@ import getRefs from './js/refs';
 
 const refs = getRefs();
 
+// refs.searchForm.addEventListener('submit', () => {
+//     onSearch(e, API);
+// });

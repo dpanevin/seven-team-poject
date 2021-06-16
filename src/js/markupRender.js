@@ -13,10 +13,8 @@ export default function markupRender(movieObj) {
 
   const years = document.querySelectorAll('.film__release');
 
-  // console.log(years);
-
-  years.forEach(el => {
-    el.textContent = el.textContent.trim().split('').splice(0, 4).join('');
-  });
+    years.forEach(el => {
+      el.textContent = el.textContent.trim().split('').splice(0, 4).join('');
+    })
 }
 

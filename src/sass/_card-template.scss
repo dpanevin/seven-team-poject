@@ -43,14 +43,19 @@
   align-items: center;
 }
 
-.film__genre::after {
+.film__release::before {
   content: '|';
   color: $accent-color;
+  margin-right: 5px;
 }
 
-.film__release,
-.film__genre {
+.film__release {
+  margin-left: 5px;
+}
+
+.film__release {
   margin-right: 5px;
+
 }
 
 .film__rating {
