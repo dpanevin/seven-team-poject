@@ -127,7 +127,8 @@ function closeModal() {
     modalCard.remove();
   }
       document.removeEventListener(`keyup`, onEscModalClick);
-    refs.closeModalBtn.removeEventListener('click', closeModal); 
+  refs.closeModalBtn.removeEventListener('click', closeModal);
+  refs.backdrop.removeEventListener('click', closeBackdrop);
 }
 
 
