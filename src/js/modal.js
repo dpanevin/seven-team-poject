@@ -40,6 +40,9 @@ const refs1 = {
 refs1.openModalByIdCard.addEventListener('click', onClickCard);
 
 function onClickCard(evt) {
+  if (!evt.target.dataset.attribute) {
+    return
+  }
   const idCard = evt.target.dataset.attribute;
 
   refs1.backdrop.classList.toggle('is-hidden');
