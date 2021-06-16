@@ -2,6 +2,7 @@
   height: 100%;
   width: 280px;
 
+
   @media screen and (min-width: 768px) {
     width: 294px;
   }
@@ -9,6 +10,21 @@
   @media screen and (min-width: 1024px) {
     width: 274px;
   }
+}
+
+.card__info {
+  
+  transition: transform 300ms $transition-timing-function;
+}
+
+.card__info:hover {
+  box-shadow:
+-15px -15px 2px -5px rgba(123,51,90,.5),
+-15px 15px 2px -5px rgba(60,74,123,.5),
+15px -15px 2px -5px rgba(255,0,0,.5),
+15px 15px 2px -5px rgba(60,123,68,.5);
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 .card__img {

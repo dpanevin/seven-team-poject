@@ -5,6 +5,7 @@ export default class MoviesApi {
     constructor() {
         this.searchQuery = '';
         this.page = 1;
+        this.totalResults = null;
     }
 
     async fetchTrendingMovies() {
@@ -12,12 +13,28 @@ export default class MoviesApi {
 
         try {
             const response = await fetch(url);
-            const movies = response.json();
+            const movies = await response.json();
+            this.totalResults = movies.total_results;
             return movies;
         } catch (error) {
             console.log(error)
         }
     }
+
+    //---genres---
+    async fetchGenres() {
+        // const url = `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=ru`;
+        const url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=ru`;
+
+        try {
+            const response = await fetch(url);
+            const genres = response.json();
+            return genres;
+        } catch (error) {
+            console.log(error)
+        }
+    }    
+    //------------
 
     async fetchMoviesByQuery() {
         const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=ru&page=${this.page}&include_adult=false&query=${this.searchQuery}`;
