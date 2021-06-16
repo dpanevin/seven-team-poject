@@ -10,6 +10,7 @@ const refs = {
   searchLine: document.querySelector('.search__line'),
   libBtn: document.querySelector('.library__btn'),
   carSetEl: document.querySelector('.card__set'),
+  logoEl: document.querySelector(".logo")
 };
 refs.navLibr.addEventListener('click', onLibrClick);
 function onLibrClick(event) {
@@ -21,7 +22,7 @@ function onLibrClick(event) {
   refs.carSetEl.innerHTML = '';
 }
 
-refs.logo.addEventListener('click', onRenderPage);
+refs.logoEl.addEventListener('click', onRenderPage);
 
 function onRenderPage(){
   event.preventDefault();

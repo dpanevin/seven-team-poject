@@ -9,6 +9,7 @@ export default function getRefs() {
       modalCard: document.querySelector('.filmcard'),
       modalCard: document.querySelector('.filmcard'),
       bodyEl: document.querySelector('body'),
+      logoEl: document.querySelector("logo")
   };
 
   return refs;
