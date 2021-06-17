@@ -13,6 +13,7 @@ const refs = getRefs();
   logoEl: document.querySelector(".logo"),
   header: document.querySelector(".header"),
 }; */
+
 refs.navLibr.addEventListener('click', onLibrClick);
 function onLibrClick(event) {
   event.preventDefault();
@@ -28,7 +29,7 @@ function onLibrClick(event) {
 refs.logoEl.addEventListener('click', onRenderPage);
 refs.navHome.addEventListener('click',onRenderPage );
 
-function onRenderPage(event){
+function onRenderPage(event) {
   event.preventDefault();
   refs.navHome.classList.add('current');
   refs.navLibr.classList.remove('current');
@@ -38,3 +39,5 @@ function onRenderPage(event){
   refs.header.classList.remove('library');
   homePageRender(movieAPI, markupRender);
 }
+
+refs.navHome.addEventListener('click', onRenderPage);
