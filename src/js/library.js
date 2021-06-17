@@ -2,10 +2,10 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import { docWatched, docQueued } from './modal';
 export { watchedPageRender };
-import getRefs from './refs'
-  
+import getRefs from './refs';
+import { addSpinner, stopSpinner } from './spinner';
+
 const refs = getRefs();
-  
 
 const homeEl = document.querySelector('.libr');
 homeEl.addEventListener('click', onWatchedElClick);
@@ -73,6 +73,7 @@ function onWatchedElClick() {
 }
 
 function watchedPageRender() {
+  addSpinner();
   cardSetEl.innerHTML = '';
   docWatched.get().then(watchedFilms => {
     watchedFilms.forEach(doc => {
@@ -122,6 +123,7 @@ function watchedPageRender() {
 
       const libraryEl = document.querySelector('.card__set');
       libraryEl.insertAdjacentHTML('afterbegin', markup);
+      stopSpinner();
     });
   });
 }
@@ -137,7 +139,8 @@ function onQueuedElClick() {
   queuePageRender();
 }
 function queuePageRender() {
-   cardSetEl.innerHTML = '';
+  addSpinner();
+  cardSetEl.innerHTML = '';
   docQueued.get().then(queuedFilms => {
     queuedFilms.forEach(doc => {
       const id = doc.data().id;
@@ -186,6 +189,7 @@ function queuePageRender() {
 
       const libraryEl = document.querySelector('.card__set');
       libraryEl.insertAdjacentHTML('afterbegin', markup);
+      stopSpinner();
     });
   });
- }
+}
