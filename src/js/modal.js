@@ -39,13 +39,12 @@ const movieapi = new MoviesApi();
 
 //======================================================
 
-
 refs.cardSetEl.addEventListener('click', onClickCard);
 
 function onClickCard(evt) {
   if (!evt.target.dataset.attribute) {
     return;
-    }
+  }
   const idCard = evt.target.dataset.attribute;
 
   refs.backdrop.classList.toggle('is-hidden');
@@ -137,14 +136,12 @@ function onClickCard(evt) {
       function onQueuedElClick(e) {
         if (noUpdateQueued) {
           alert({
-            text:
-              'The film you are trying to add is already in the "QUEUED" list and can`t be added to library twice',
+            text: 'The film you are trying to add is already in the "QUEUED" list. Check library!',
           });
           return;
         } else if (noUpdateWatched) {
           alert({
-            text:
-              'The film you are trying to add is already in the "WATCHED" list and can`t be added to library twice',
+            text: 'The film you are trying to add is already in the "WATCHED" list. Check library!',
           });
           return;
         } else {
@@ -170,17 +167,20 @@ function onClickCard(evt) {
       }
     })
     .catch(error => console.log(error));
-  
+
   document.addEventListener(`keyup`, onEscModalClick);
   refs.closeModalBtn.addEventListener('click', closeModal);
   refs.backdrop.addEventListener('click', closeBackdrop);
 }
 function closeBackdrop(e) {
-   if (e.target.classList.value === `backdrop`) { closeModal(); }
-    
+  if (e.target.classList.value === `backdrop`) {
+    closeModal();
+  }
 }
 function onEscModalClick(e) {
-        if( e.key === `Escape` ) {closeModal();}
+  if (e.key === `Escape`) {
+    closeModal();
+  }
 }
 
 function closeModal() {
@@ -191,10 +191,7 @@ function closeModal() {
   if (modalCard) {
     modalCard.remove();
   }
-      document.removeEventListener(`keyup`, onEscModalClick);
+  document.removeEventListener(`keyup`, onEscModalClick);
   refs.closeModalBtn.removeEventListener('click', closeModal);
   refs.backdrop.removeEventListener('click', closeBackdrop);
 }
-
-
-
