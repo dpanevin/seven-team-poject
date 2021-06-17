@@ -1,6 +1,7 @@
 import './sass/main.scss';
-import MovieAPI from './js/api-service';
-const movieAPI = new MovieAPI;
+import MoviesApi from './js/api-service';
+const moviesApi = new MoviesApi;
+export {moviesApi};
 import { addSpinner, stopSpinner } from './js/spinner';
 // вызывай функции addSpinner() или stopSpinner(), чтобы запустить или остановить спиннер
 import './js/header';
@@ -13,7 +14,7 @@ import './js/library';
 import './js/pagination';
 
 
-homePageRender(movieAPI, markupRender);
+homePageRender(moviesApi, markupRender);
 
 import './js/modal'
 import './js/teamCard';

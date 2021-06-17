@@ -9,7 +9,7 @@ export default class MoviesApi {
     }
 
     async fetchTrendingMovies() {
-        const url = `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=ru`;
+        const url = `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&page=${this.page}&language=ru`;
 
         try {
             const response = await fetch(url);

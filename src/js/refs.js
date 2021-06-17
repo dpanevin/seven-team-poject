@@ -19,7 +19,8 @@ export default function getRefs() {
       header: document.querySelector(".header"),
       markupModal:document.querySelector("ul.team"),
       teamLink:document.querySelector(".footer__caption-link"),
-      teamCard:document.querySelector(".team__card")
+      teamCard: document.querySelector(".team__card"),
+      paginationEl: document.getElementById('tui-pagination-container')
   };
 
   return refs;
