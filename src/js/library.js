@@ -32,10 +32,25 @@ function googleLogin() {
     .catch(console.log);
 }
 
-function googleLogout() {}
+function googleLogout() {
+  firebase
+    .auth()
+    .signOut()
+    .then(result => {
+      loginEl.innerText = `LOGIN`;
+      localStorage.setItem('status', '');
+      localStorage.setItem('userName', '');
+      logoutEl.classList.add('visually-hidden');
+      // Sign-out successful.
+    })
+    .catch(error => {
+      // An error happened.
+    });
+}
 
 if (localStorage.getItem('status') === 'loggedin') {
   loginEl.innerText = `Вы вошли как ${localStorage.getItem('userName')}`;
+  logoutEl.classList.remove('visually-hidden');
 }
 
 const watchedEl = document.querySelector('.library__btn-watched');
