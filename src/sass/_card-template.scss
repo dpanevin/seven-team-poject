@@ -1,15 +1,5 @@
 .card-item {
-  height: 100%;
   width: 280px;
-
-
-  @media screen and (min-width: 768px) {
-    width: 294px;
-  }
-
-  @media screen and (min-width: 1024px) {
-    width: 274px;
-  }
 }
 
 .card__info {
@@ -28,7 +18,18 @@
 }
 
 .card__img {
-  width: 100%;
+  width: 280px;
+  height: 398px;
+
+  border-radius: 5px;
+
+  @media screen and (min-width: 768px) {
+    width: 294px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 274px;
+  }
 }
 
 .film__title {

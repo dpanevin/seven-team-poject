@@ -1,10 +1,12 @@
 <!-- карточка с фильмом -->
 {{#each this.results}}
   <li class='card__item'>
+    
     <div class='card__info'>
       {{#if poster_path}} <img class="card__img" src='https://image.tmdb.org/t/p/w500/{{poster_path}}' alt='{{title}} постер фильма' data-attribute='{{id}}' />
       {{else}} <img class="card__img" src='https://www.hd-film.stream/assets/general/images/no_poster.jpg' alt='постер к фильму отсутствует' data-attribute='{{id}}' />
       {{/if}}
+      
       <div class='card__description'>
         <p class='film__title'>
           {{this.title}}

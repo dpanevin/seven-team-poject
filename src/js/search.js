@@ -19,7 +19,7 @@ export default function onSearch(e) {
     
     filmsApi.query = form.elements.query.value;
 
-    form.reset();
+    // form.reset();
     filmsApi.resetPage();
 
     try {
