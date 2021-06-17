@@ -21,7 +21,7 @@
   pointer-events: none;
 }
 .modal {
- /*  position: absolute;
+  /*  position: absolute;
   width: 280px;
   //  margin-top: 20px;
   margin: auto;
@@ -32,12 +32,12 @@ left: 50%;
   // margin-right: auto;
   transition: transform 250ms $transition-timing-function 250ms; */
   position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    width: 280px;
-    height: 600px; 
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 280px;
+  height: 600px;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-modal-close {
@@ -62,15 +62,14 @@ left: 50%;
   width: 280px;
   padding-left: 20px;
   padding-right: 20px;
- /*  padding-top: 0px;
+  /*  padding-top: 0px;
   padding-bottom: 30px; */
   margin-left: auto;
   margin-right: auto;
   background-color: $text-color;
 }
-.filmcard-title-list-item:not(:last-child){
+.filmcard-title-list-item:not(:last-child) {
   margin-bottom: 10px;
-
 }
 .filmcard-image__thumb {
   width: 240px;
@@ -94,21 +93,20 @@ left: 50%;
 .vote {
   margin-right: 29px;
   margin-left: 0;
- 
 }
 .vote_average {
   width: 36px;
   height: 16px;
   padding: 1px 9px 1px 10px;
   border-radius: 5px;
- /*  font-size: 12px;
+  /*  font-size: 12px;
   align-items: center;
   text-align: center;
-  text-transform: uppercase */;
+  text-transform: uppercase */
   color: $text-color;
   background: $accent-color;
 }
-.vote_count{
+.vote_count {
   width: 36px;
   height: 16px;
   padding: 1px 4px;
@@ -116,20 +114,19 @@ left: 50%;
   align-items: center;
   text-align: center;
   color: black;
-  background: #F7F7F7;
+  background: #f7f7f7;
 }
-.vote_slash{
-  color:#8C8C8C;
+.vote_slash {
+  color: #8c8c8c;
   margin-left: 1px;
 }
 .popular {
   margin-right: 42px;
-  
 }
 .original {
   margin-right: 71px;
 }
-.wrap{
+.wrap {
   display: flex;
   flex-wrap: wrap;
 }
@@ -156,7 +153,9 @@ left: 50%;
   color: #000000;
   border: 1px solid #000000;
 }
-.button:focus{
+
+.button:focus,
+.button:hover {
   background: $accent-color;
   border: none;
   color: $text-color;
@@ -202,7 +201,7 @@ left: 50%;
     width: 264px;
     height: 374px;
     margin-right: 32px;
-   /*  margin-bottom: 146px; */
+    /*  margin-bottom: 146px; */
   }
 
   .filmcard-content {
@@ -239,10 +238,10 @@ left: 50%;
     margin-right: 30px;
   }
   .vote {
-    margin-right: 49px;  
+    margin-right: 49px;
   }
   .popular {
-    margin-right: 62px;  
+    margin-right: 62px;
   }
   .original {
     margin-right: 91px;
