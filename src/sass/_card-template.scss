@@ -39,12 +39,14 @@
 }
 
 .film__description {
+  
   @include font(500, 12px, 0.75, $accent-color);
   display: flex;
   align-items: center;
 }
 
 .film__release::before {
+  margin-left: 0;
   content: '|';
   color: $accent-color;
   margin-right: 5px;
