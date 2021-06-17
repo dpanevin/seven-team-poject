@@ -14,9 +14,12 @@
   margin-left: 10px;
   font-size: 30px;
 }
-.navigation__list {
+.navigation__list,
+.mobile {
   display: flex;
   margin-bottom: 40px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .navigation__item:not(:last-child) {
@@ -40,7 +43,8 @@
   fill: $text-color;
   cursor: pointer;
 }
-.navigation__item {
+.navigation__item,
+.navigation__login {
   font-family: $main-font;
   font-style: normal;
   font-weight: 500;
