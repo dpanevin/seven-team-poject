@@ -11,7 +11,7 @@ const refs = getRefs();
 
 const filmsApi = new MoviesApi; 
 
-export default function onSearch(e) {
+export default async function onSearch(e) {
 
     e.preventDefault();
 
@@ -28,11 +28,27 @@ export default function onSearch(e) {
             onFetchError();
             filmsApi.fetchTrendingMovies().then(movies => {
                 createMarkup(movies);
+
             });
         } 
         else {
-            filmsApi.fetchMoviesByQuery().then(movies => {createMarkup(movies);
-            });
+            // filmsApi.fetchMoviesByQuery().then(movies => {
+            //     createMarkup(movies);
+
+            // });
+            
+            const allPromises = await Promise.all([
+                filmsApi.fetchGenres(),    // жанры
+                filmsApi.fetchMoviesByQuery() // фильмы
+            ]);
+            const gnr = allPromises[0]; // жанры
+            const movies = allPromises[1]; // фильмы
+            createMarkup(movies);
+            const genreIdsArray = movies.results.map(card => card.genre_ids);
+            console.log(genreIdsArray);
+            const genreNamesArray = genreIdsArray.map(film => film.map(genre => getNameById(gnr.genres, genre).name));
+            const genreEl = document.querySelectorAll('.film__genre');
+            genreEl.forEach((el, ind) => el.textContent = genreNamesArray[ind].join(', '));
         }
     } catch (error) {
         console.log(error);
@@ -50,3 +66,7 @@ function onFetchError() {
 }
  
 refs.searchForm.addEventListener('submit', onSearch);
+
+function getNameById(arr, id) {
+    return arr.find(x => x.id === id);
+} 
