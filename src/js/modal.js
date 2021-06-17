@@ -9,7 +9,7 @@ defaults.sticker = false;
 defaults.closer = false;
 defaults.icon = false;
 defaults.minHeight = '20px';
-defaults.delay = 4000;
+defaults.delay = 2000;
 
 import 'firebase/database';
 import 'firebase/messaging';
