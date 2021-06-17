@@ -11,7 +11,9 @@
         </p>
         <div class='film__description'>
           <p class='film__genre'>
-            {{genres.name}}
+            {{#if genres}}{{genres.name}}
+            {{else}}{{genre_ids}}
+            {{/if}}
           </p>
           <p class='film__release'  data-attribute='{{id}}'>
             {{release_date}}
