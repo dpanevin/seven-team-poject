@@ -9,9 +9,11 @@
         <p class='film__title'  data-attribute='{{id}}'>
           {{this.title}}
         </p>
-        <div class='film__description'  data-attribute='{{id}}'>
-          <p class='film__genre'  data-attribute='{{id}}'>
-            {{genres.name}}
+        <div class='film__description'>
+          <p class='film__genre'>
+            {{#if genres}}{{genres.name}}
+            {{else}}{{genre_ids}}
+            {{/if}}
           </p>
           <p class='film__release'  data-attribute='{{id}}'>
             {{release_date}}
