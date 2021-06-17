@@ -9,7 +9,17 @@ export default function getRefs() {
       modalCard: document.querySelector('.filmcard'),
       modalCard: document.querySelector('.filmcard'),
       bodyEl: document.querySelector('body'),
-      logoEl: document.querySelector("logo")
+      logoEl: document.querySelector("logo"),
+      navHome: document.querySelector('.home'),
+      navLibr: document.querySelector('.libr'),
+      searchLine: document.querySelector('.search__line'),
+      libBtn: document.querySelector('.library__btn'),
+      carSetEl: document.querySelector('.card__set'),
+      logoEl: document.querySelector(".logo"),
+      header: document.querySelector(".header"),
+      markupModal:document.querySelector("ul.team"),
+      teamLink:document.querySelector(".footer__caption-link"),
+      teamCard:document.querySelector(".team__card")
   };
 
   return refs;

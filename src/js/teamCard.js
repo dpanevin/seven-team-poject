@@ -1,11 +1,14 @@
 import cardTpl from '../templates/teamTpl.hbs';
 import teamModal from '../team.json';
+import getRefs from './refs';
 
-const refs = {
+const refs = getRefs();
+
+/* const refs = {
     markupModal:document.querySelector("ul.team"),
     teamLink:document.querySelector(".footer__caption-link"),
     teamCard:document.querySelector(".team__card")
-    }
+    } */
 const markupTeamModal = cardTpl(teamModal);
 refs.markupModal.insertAdjacentHTML('beforeend', markupTeamModal);
 
