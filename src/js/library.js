@@ -32,16 +32,7 @@ function googleLogin() {
     .catch(console.log);
 }
 
-function googleLogout() {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  firebase
-    .auth()
-    .signOut(provider)
-    .then(result => {
-      loginEl.innerText = `LOGIN`;
-    })
-    .catch(console.log);
-}
+function googleLogout() {}
 
 if (localStorage.getItem('status') === 'loggedin') {
   loginEl.innerText = `Вы вошли как ${localStorage.getItem('userName')}`;
