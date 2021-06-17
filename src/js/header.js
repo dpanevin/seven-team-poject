@@ -1,8 +1,7 @@
-import homePageRender from './home';
-import MovieAPI from './api-service';
+import {homePageRender} from './home';
 import markupRender from './markupRender';
 import getRefs from './refs';
-const movieAPI = new MovieAPI();
+import {moviesApi} from '../index'
 const refs = getRefs();
 /* const refs = {
   navHome: document.querySelector('.home'),
@@ -37,7 +36,6 @@ function onRenderPage(event) {
   refs.searchLine.classList.remove('visually-hidden');
   refs.header.classList.add('header');
   refs.header.classList.remove('library');
-  homePageRender(movieAPI, markupRender);
+  homePageRender(moviesApi, markupRender);
 }
 
-refs.navHome.addEventListener('click', onRenderPage);

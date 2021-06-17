@@ -1,8 +1,6 @@
 import createMarkup from '../templates/card-template.hbs'; // забираем шаблон карточки
 import onClickCard from './modal'
 import getRefs from './refs';
-import MoviesApi from './api-service';
-const moviesApi = new MoviesApi; 
 // const refs = {
 //     cardSetEl: document.querySelector('.card__set')  // список для рендеринга
 // };
@@ -17,9 +15,10 @@ export default async function markupRender(movieObj) {
 
   const years = document.querySelectorAll('.film__release');
 
-    years.forEach(el => {
-      el.textContent = el.textContent.trim().split('').splice(0, 4).join('');
-    })
+  years.forEach(el => {
+    el.textContent = el.textContent.trim().split('').splice(0, 4).join('');
+  });
+
 }
 
 function getNameById(arr, id) {

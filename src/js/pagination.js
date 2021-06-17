@@ -2,8 +2,11 @@ import Pagination from 'tui-pagination';
 import arrow from '../images/sprite.svg'
 import getRefs from './refs';
 import { moviesApi } from '../index';
-import homePageRender from './home';
-import markupRender from './markupRender'
+import {pageRender} from './home';
+import markupRender from './markupRender';
+import { watchedPageRender } from './library';
+export { initPagination };
+import {renderSearchPage} from './search';
 
 const refs = getRefs();
 
@@ -31,18 +34,26 @@ const pageOptions = { // below default value of options
         }
 };
 
-const instance = new Pagination(refs.paginationEl, pageOptions);
 
-instance.on('afterMove', onPageMoving);
 
-function onPageMoving(evt) {
-    var currentPage = evt.page;
-    moviesApi.page = currentPage;
-    console.log(moviesApi.page)
+
+function initPagination() {
+    if (moviesApi.totalResults <= 20) {
+        refs.paginationEl.innerHTML = ''
+        return
+    }
+
+    pageOptions.totalItems = moviesApi.totalResults;
+    const instance = new Pagination(refs.paginationEl, pageOptions);
+    instance.on('afterMove', onPageMoving);
+
+    
+    
 }
 
 function onPageMoving(evt) {
     const currentEl = document.querySelector('.current');
+    pageOptions.totalItems = moviesApi.totalResults;
 
     if (refs.navHome === currentEl) {
         onHomeIsCurrent(evt);
@@ -53,11 +64,19 @@ function onPageMoving(evt) {
 
 function onHomeIsCurrent(evt) {
     var currentPage = evt.page;
-    moviesApi.page = currentPage;
-    homePageRender(moviesApi, markupRender);
+    
+
+    if (moviesApi.currentRequest === 'trending') {
+        moviesApi.page = currentPage;
+        pageRender(moviesApi, markupRender);
+    } else if (moviesApi.currentRequest === 'search') {
+        moviesApi.page = currentPage;
+        renderSearchPage(moviesApi);
+    }
+
     refs.cardSetEl.scrollIntoView(top);
 }
 
 function onLibIsCurrent() {
-    
+    refs.paginationEl.innerHTML = ''
 }

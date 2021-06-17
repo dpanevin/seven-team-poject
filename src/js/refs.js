@@ -20,7 +20,9 @@ export default function getRefs() {
       markupModal:document.querySelector("ul.team"),
       teamLink:document.querySelector(".footer__caption-link"),
       teamCard: document.querySelector(".team__card"),
-      paginationEl: document.getElementById('tui-pagination-container')
+      paginationEl: document.getElementById('tui-pagination-container'),
+      watchedBtn: document.querySelector('.library__btn-watched'),
+      queueBtn: document.querySelector('.library__btn-queue')
   };
 
   return refs;

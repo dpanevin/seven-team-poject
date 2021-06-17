@@ -6,15 +6,19 @@ export default class MoviesApi {
         this.searchQuery = '';
         this.page = 1;
         this.totalResults = null;
+        this.currentRequest = null;
     }
+    
 
     async fetchTrendingMovies() {
+        this.currentRequest = 'trending';
         const url = `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&page=${this.page}&language=ru`;
 
         try {
             const response = await fetch(url);
             const movies = await response.json();
             this.totalResults = movies.total_results;
+            this.currentRequest = 'trending';
             return movies;
         } catch (error) {
             console.log(error)
@@ -37,11 +41,14 @@ export default class MoviesApi {
     //------------
 
     async fetchMoviesByQuery() {
+        this.currentRequest = 'search';
         const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=ru&page=${this.page}&include_adult=false&query=${this.searchQuery}`;
 
         try {
             const response = await fetch(url);
-            const movies = response.json();
+            const movies = await response.json();
+            this.totalResults = movies.total_results;
+            this.currentRequest = 'search';
             return movies;
         } catch (error) {
             console.log(error)

@@ -1,19 +1,15 @@
-import MoviesApi from './api-service';
-
 import createMarkup from './markupRender'
 import { alert } from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
-
 import getRefs from './refs';
 
 const refs = getRefs();
 
-const filmsApi = new MoviesApi; 
 
-export default async function onSearch(e) {
+export { onSearch, renderSearchPage };
 
-    e.preventDefault();
+async function onSearch(e, filmsApi) {
 
     const form = e.currentTarget;
     
@@ -22,7 +18,12 @@ export default async function onSearch(e) {
     // form.reset();
     filmsApi.resetPage();
 
-    try {
+    await renderSearchPage(filmsApi);
+
+};
+
+async function renderSearchPage(filmsApi) {
+     try {
         if (filmsApi.query === '') {
             clearMarkup();
             onFetchError();
@@ -52,7 +53,7 @@ export default async function onSearch(e) {
     } catch (error) {
         console.log(error);
     }
-};
+}
 
 function clearMarkup() {
     refs.cardSetEl.innerHTML = '';
@@ -64,7 +65,7 @@ function onFetchError() {
     });
 }
  
-refs.searchForm.addEventListener('submit', onSearch);
+
 
 function getNameById(arr, id) {
     return arr.find(x => x.id === id);

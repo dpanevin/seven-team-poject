@@ -1,4 +1,13 @@
-export default async function homePageRender(API, fn) {
+import { initPagination } from './pagination';
+
+export { homePageRender, pageRender };
+    
+async function homePageRender(API, fn) {
+    await pageRender(API, fn);
+    initPagination();
+}
+
+async function pageRender(API, fn) {
     const movie = API;
 
     try {
@@ -25,7 +34,7 @@ export default async function homePageRender(API, fn) {
         
     } catch (error) {
         console.log('Error ',error);
-    }    
+    } 
 }
 
 function getNameById(arr, id) {

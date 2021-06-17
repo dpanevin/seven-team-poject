@@ -1,6 +1,11 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { docWatched, docQueued } from './modal';
+export { watchedPageRender };
+import getRefs from './refs'
+  
+const refs = getRefs();
+  
 
 const homeEl = document.querySelector('.libr');
 homeEl.addEventListener('click', onWatchedElClick);
@@ -61,8 +66,13 @@ watchedEl.addEventListener('click', onWatchedElClick);
 const cardSetEl = document.querySelector('.card__set');
 
 function onWatchedElClick() {
+  refs.paginationEl.innerHTML = '';
   watchedEl.classList.add('library__btn-clicked');
   queuedEl.classList.remove('library__btn-clicked');
+  watchedPageRender();
+}
+
+function watchedPageRender() {
   cardSetEl.innerHTML = '';
   docWatched.get().then(watchedFilms => {
     watchedFilms.forEach(doc => {
@@ -121,9 +131,13 @@ const queuedEl = document.querySelector('.library__btn-queue');
 queuedEl.addEventListener('click', onQueuedElClick);
 
 function onQueuedElClick() {
+  refs.paginationEl.innerHTML = '';
   queuedEl.classList.add('library__btn-clicked');
   watchedEl.classList.remove('library__btn-clicked');
-  cardSetEl.innerHTML = '';
+  queuePageRender();
+}
+function queuePageRender() {
+   cardSetEl.innerHTML = '';
   docQueued.get().then(queuedFilms => {
     queuedFilms.forEach(doc => {
       const id = doc.data().id;
@@ -174,4 +188,4 @@ function onQueuedElClick() {
       libraryEl.insertAdjacentHTML('afterbegin', markup);
     });
   });
-}
+ }
