@@ -7,7 +7,7 @@ async function homePageRender(API, fn) {
     initPagination();
 }
 
-async function pageRender(API, fn) {
+export default async function pageRender(API, fn) {
     const movie = API;
 
     try {
@@ -29,7 +29,7 @@ async function pageRender(API, fn) {
         // строка жанров
         const genreEl = document.querySelectorAll('.film__genre');
 
-        genreEl.forEach((el, ind) => el.textContent = genreNamesArray[ind].join(', '));
+        genreEl.forEach((el, ind) => el.textContent = genreNamesArray[ind].splice(0, 2).join(', '));
 
         
     } catch (error) {
