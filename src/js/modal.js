@@ -2,6 +2,15 @@ import filmcard from './../templates/filmcard-modal.hbs';
 import MoviesApi from './api-service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import { alert, success, defaults } from '@pnotify/core';
+import '@pnotify/core/dist/BrightTheme.css';
+
+defaults.sticker = false;
+defaults.closer = false;
+defaults.icon = false;
+defaults.minHeight = '20px';
+defaults.delay = 4000;
+
 import 'firebase/database';
 import 'firebase/messaging';
 import 'firebase/storage';
@@ -49,6 +58,7 @@ function onClickCard(evt) {
     refs.modal.insertAdjacentHTML('beforeend', filmcard(renderId));
     return renderId;
   }
+
   e()
     .then(response => {
       const watchedEl = document.querySelector('.btnwatched');
@@ -56,7 +66,7 @@ function onClickCard(evt) {
       const queuedEl = document.querySelector('.btnqueue');
       //   console.log(queuedEl);
       const idEl = document.querySelector('.filmcard-image').dataset.attribute;
-      //   console.log(idEl);
+      // console.log(idEl);
       const srcEl = document.querySelector('.filmcard-image').src;
       //   console.log(srcEl);
       const nameEl = document.querySelector('.filmcard-image').alt;
@@ -68,40 +78,95 @@ function onClickCard(evt) {
       const genreEl = document.querySelector('.filmcard-image').dataset.genre;
       // console.log(genreEl);
       watchedEl.addEventListener('click', onWatchedElClick);
+
+      let noUpdateWatched = null;
+      let noUpdateQueued = null;
+
+      docWatched.get().then(watchedFilms => {
+        watchedFilms.forEach(doc => {
+          const firebaseId = doc.data().id;
+          if (idEl === firebaseId) {
+            noUpdateWatched = 1;
+          }
+        });
+      });
+
+      docQueued.get().then(queuedFilms => {
+        queuedFilms.forEach(doc => {
+          const firebaseId = doc.data().id;
+          if (idEl === firebaseId) {
+            noUpdateQueued = 1;
+          }
+        });
+      });
+
       function onWatchedElClick(e) {
-        docWatched
-          .add({
-            id: idEl,
-            src: srcEl,
-            name: nameEl,
-            date: dateEl,
-            vote: voteEl,
-            genre: genreEl,
-          })
-          .then(function () {
-            console.log('Document successfully written!');
-          })
-          .catch(function (error) {
-            console.log('Error adding document: ', error);
+        if (noUpdateWatched) {
+          alert({
+            text: 'The film you are trying to add is already in the "WATCHED" list. Check library!',
           });
+          return;
+        } else if (noUpdateQueued) {
+          alert({
+            text: 'The film you are trying to add is already in the "QUEUED" list. Check library!',
+          });
+          return;
+        } else {
+          docWatched
+            .add({
+              id: idEl,
+              src: srcEl,
+              name: nameEl,
+              date: dateEl,
+              vote: voteEl,
+              genre: genreEl,
+            })
+            .then(function () {
+              success({
+                text: 'Film added to "WATCHED"',
+              });
+            })
+            .catch(function (error) {
+              console.log('Error adding document: ', error);
+            });
+        }
+        setTimeout(closeModal, 1000);
       }
+
       queuedEl.addEventListener('click', onQueuedElClick);
       function onQueuedElClick(e) {
-        docQueued
-          .add({
-            id: idEl,
-            src: srcEl,
-            name: nameEl,
-            date: dateEl,
-            vote: voteEl,
-            genre: genreEl,
-          })
-          .then(function () {
-            console.log('Document successfully written!');
-          })
-          .catch(function (error) {
-            console.log('Error adding document: ', error);
+        if (noUpdateQueued) {
+          alert({
+            text:
+              'The film you are trying to add is already in the "QUEUED" list and can`t be added to library twice',
           });
+          return;
+        } else if (noUpdateWatched) {
+          alert({
+            text:
+              'The film you are trying to add is already in the "WATCHED" list and can`t be added to library twice',
+          });
+          return;
+        } else {
+          docQueued
+            .add({
+              id: idEl,
+              src: srcEl,
+              name: nameEl,
+              date: dateEl,
+              vote: voteEl,
+              genre: genreEl,
+            })
+            .then(function () {
+              success({
+                text: 'Film added to "QUEUED"',
+              });
+            })
+            .catch(function (error) {
+              console.log('Error adding document: ', error);
+            });
+        }
+        setTimeout(closeModal, 1000);
       }
     })
     .catch(error => console.log(error));

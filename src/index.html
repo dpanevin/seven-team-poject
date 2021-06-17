@@ -11,12 +11,14 @@
       crossorigin="anonymous"
     />
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header class="header">
-      
       <div class="container">
         <nav class="navigation__header">
           <div class="navigation">
@@ -38,75 +40,71 @@
               <p class="navigation__item libr">MY LIBRARY</p>
             </div>
               <p class="navigation__login auth">LOGIN</p>
+              <div class="navigation__item logout visually-hidden">LOGOUT</div>
             </div>
             
-
-
-
-
-
           </div>
-<div class="library__btn visually-hidden">
-<button class="library__btn-watched">Watched</button>
-<button class="library__btn-queue">queue</button>
-</div>
-  <div class="search__line">
-      <form class="search__form" id="search-form">
-          <input 
-          class="input"
-            type="text"
-            name="query"
-            placeholder="Поиск фильмов"
-          />
-          <button type="submit" class="search__btn">
-  <svg class="search__icon">
-      <use href="./images/sprite.svg#icon-search"></use>
-  </svg>
-</button>
-</form>
-</div>
-</nav>
+          <div class="library__btn visually-hidden">
+            <button class="library__btn-watched">Watched</button>
+            <button class="library__btn-queue">queue</button>
+          </div>
+          <div class="search__line">
+            <form class="search__form" id="search-form">
+              <input class="input" type="text" name="query" placeholder="Поиск фильмов" />
+              <button type="submit" class="search__btn">
+                <svg class="search__icon">
+                  <use href="./images/sprite.svg#icon-search"></use>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </nav>
       </div>
-    
     </header>
     <main>
       <div class="container">
         <ul class="card__set">
-          <!--тут будут карточки с фильмами -->          
+          <!--тут будут карточки с фильмами -->
         </ul>
 
         <div id="tui-pagination-container" class="tui-pagination"></div>
       </div>
     </main>
-    
+
     <footer class="footer">
       <div class="container">
         <p class="footer__desc">
-          <span class="footer__copyright">&copy 2020 | All Rights Reserved |&nbsp;</span><span class="footer__caption">Developed with<svg class="footer__icon-heart" width="14px" height="13px">
-            <use href="./images/sprite.svg#heart"></use>
-          </svg><a class="footer__caption-link" href="#">GoIT Students</a></span>
+          <span class="footer__copyright">&copy 2020 | All Rights Reserved |&nbsp;</span
+          ><span class="footer__caption"
+            >Developed with<svg class="footer__icon-heart" width="14px" height="13px">
+              <use href="./images/sprite.svg#heart"></use></svg
+            ><a class="footer__caption-link" href="#">GoIT Students</a></span
+          >
         </p>
       </div>
       <div class="team__card is-hidden">
         <div class="team__modal">
-        <ul class="team"></ul>
+          <ul class="team"></ul>
         </div>
       </div>
     </footer>
 
     <!-- модалка -->
-    <div class="backdrop is-hidden " data-modal>
-    
+    <div class="backdrop is-hidden" data-modal>
       <div class="modal">
-    
         <button type="button" class="btn-modal-close" data-modal-close>
-          <svg class="icon-close-btn" width="30" height="30" viewBox="0 0 30 30" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
+          <svg
+            class="icon-close-btn"
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path d="M8 8L22 22" stroke="black" stroke-width="2" />
             <path d="M8 22L22 8" stroke="black" stroke-width="2" />
           </svg>
         </button>
-    
       </div>
     </div>
 

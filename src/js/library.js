@@ -2,14 +2,19 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import { docWatched, docQueued } from './modal';
 
+const homeEl = document.querySelector('.libr');
+homeEl.addEventListener('click', onWatchedElClick);
+
 document.addEventListener('DOMContentLoaded', event => {
   const app = firebase.app();
   // console.log(app);
 });
 
 const loginEl = document.querySelector('.auth');
+const logoutEl = document.querySelector('.logout');
 
 loginEl.addEventListener('click', googleLogin);
+logoutEl.addEventListener('click', googleLogout);
 
 function googleLogin() {
   const provider = new firebase.auth.GoogleAuthProvider();
@@ -18,10 +23,34 @@ function googleLogin() {
     .signInWithPopup(provider)
     .then(result => {
       const user = result.user;
-      loginEl.innerText = `Вы вошли как ${user.displayName}`;
       // console.log(user);
+      loginEl.innerText = `Вы вошли как ${user.displayName}`;
+      localStorage.setItem('status', 'loggedin');
+      localStorage.setItem('userName', `${user.displayName}`);
+      logoutEl.classList.remove('visually-hidden');
     })
     .catch(console.log);
+}
+
+function googleLogout() {
+  firebase
+    .auth()
+    .signOut()
+    .then(result => {
+      loginEl.innerText = `LOGIN`;
+      localStorage.setItem('status', '');
+      localStorage.setItem('userName', '');
+      logoutEl.classList.add('visually-hidden');
+      // Sign-out successful.
+    })
+    .catch(error => {
+      // An error happened.
+    });
+}
+
+if (localStorage.getItem('status') === 'loggedin') {
+  loginEl.innerText = `Вы вошли как ${localStorage.getItem('userName')}`;
+  logoutEl.classList.remove('visually-hidden');
 }
 
 const watchedEl = document.querySelector('.library__btn-watched');
@@ -32,6 +61,8 @@ watchedEl.addEventListener('click', onWatchedElClick);
 const cardSetEl = document.querySelector('.card__set');
 
 function onWatchedElClick() {
+  watchedEl.classList.add('library__btn-clicked');
+  queuedEl.classList.remove('library__btn-clicked');
   cardSetEl.innerHTML = '';
   docWatched.get().then(watchedFilms => {
     watchedFilms.forEach(doc => {
@@ -90,6 +121,8 @@ const queuedEl = document.querySelector('.library__btn-queue');
 queuedEl.addEventListener('click', onQueuedElClick);
 
 function onQueuedElClick() {
+  queuedEl.classList.add('library__btn-clicked');
+  watchedEl.classList.remove('library__btn-clicked');
   cardSetEl.innerHTML = '';
   docQueued.get().then(queuedFilms => {
     queuedFilms.forEach(doc => {
