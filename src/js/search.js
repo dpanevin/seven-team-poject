@@ -48,7 +48,7 @@ async function renderSearchPage(filmsApi) {
             const genreIdsArray = movies.results.map(card => card.genre_ids);
             const genreNamesArray = genreIdsArray.map(film => film.map(genre => getNameById(gnr.genres, genre).name));
             const genreEl = document.querySelectorAll('.film__genre');
-            genreEl.forEach((el, ind) => el.textContent = genreNamesArray[ind].join(', '));
+            genreEl.forEach((el, ind) => el.textContent = genreNamesArray[ind].splice(0, 2).join(', '));
         }
     } catch (error) {
         console.log(error);

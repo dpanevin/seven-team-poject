@@ -7,7 +7,7 @@ async function homePageRender(API, fn) {
     initPagination();
 }
 
-async function pageRender(API, fn) {
+export default async function pageRender(API, fn) {
     const movie = API;
 
     try {

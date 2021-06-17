@@ -1,13 +1,16 @@
 import createMarkup from '../templates/card-template.hbs'; // забираем шаблон карточки
-import onClickCard from './modal'
+import onClickCard from './modal';
 import getRefs from './refs';
 // const refs = {
 //     cardSetEl: document.querySelector('.card__set')  // список для рендеринга
 // };
 
+import { pageRender } from './home';
+
 const refs = getRefs();
 
 export default async function markupRender(movieObj) {
+  
   const markup = createMarkup(movieObj);
   refs.cardSetEl.innerHTML = markup; // заполняется список
 
@@ -18,9 +21,11 @@ export default async function markupRender(movieObj) {
   years.forEach(el => {
     el.textContent = el.textContent.trim().split('').splice(0, 4).join('');
   });
-
+  
 }
 
 function getNameById(arr, id) {
-    return arr.find(x => x.id === id);
-} 
+  pageRender(API, fn);
+  return arr.find(x => x.id === id);
+  
+}
