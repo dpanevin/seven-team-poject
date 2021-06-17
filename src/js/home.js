@@ -33,8 +33,8 @@ async function pageRender(API, fn) {
 
     // строка жанров
     const genreEl = document.querySelectorAll('.film__genre');
+    genreEl.forEach((el, ind) => el.textContent = genreNamesArray[ind].splice(0, 2).join(', '));
 
-    genreEl.forEach((el, ind) => (el.textContent = genreNamesArray[ind].join(', ')));
   } catch (error) {
     console.log('Error ', error);
   }
