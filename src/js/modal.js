@@ -2,10 +2,20 @@ import filmcard from './../templates/filmcard-modal.hbs';
 import MoviesApi from './api-service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import { alert, success, defaults } from '@pnotify/core';
+import '@pnotify/core/dist/BrightTheme.css';
+
+defaults.sticker = false;
+defaults.closer = false;
+defaults.icon = false;
+defaults.minHeight = '20px';
+defaults.delay = 4000;
+
 import 'firebase/database';
 import 'firebase/messaging';
 import 'firebase/storage';
-
+import getRefs from './refs';
+//==================================================
 const firebaseConfig = {
   apiKey: 'AIzaSyDdl0b3K_4fjMGLjZ2-JHtxj81J32at2gE',
   authDomain: 'seven-team-project.firebaseapp.com',
@@ -24,34 +34,31 @@ export const docWatched = db.collection('watchedFilms');
 export const docQueued = db.collection('queuedFilms');
 // console.log(docQueued);
 //===========================================================
-
+const refs = getRefs();
 const movieapi = new MoviesApi();
 
 //======================================================
-const refs1 = {
-  openModalByIdCard: document.querySelector('.card__set'),
-  closeModalBtn: document.querySelector('[data-modal-close]'),
-  modal: document.querySelector('.modal'),
-  backdrop: document.querySelector('.backdrop'),
-  modalCard: document.querySelector('.filmcard'),
-  bodyEl: document.querySelector('body'),
-};
 
-refs1.openModalByIdCard.addEventListener('click', onClickCard);
+
+refs.cardSetEl.addEventListener('click', onClickCard);
 
 function onClickCard(evt) {
+  if (!evt.target.dataset.attribute) {
+    return;
+    }
   const idCard = evt.target.dataset.attribute;
 
-  refs1.backdrop.classList.toggle('is-hidden');
-  refs1.bodyEl.classList.add('modal-open');
+  refs.backdrop.classList.toggle('is-hidden');
+  refs.bodyEl.classList.add('modal-open');
 
   async function e() {
     const renderId = await movieapi.fetchMovieById(idCard);
     // const markup = ;
 
-    refs1.modal.insertAdjacentHTML('beforeend', filmcard(renderId));
+    refs.modal.insertAdjacentHTML('beforeend', filmcard(renderId));
     return renderId;
   }
+
   e()
     .then(response => {
       const watchedEl = document.querySelector('.btnwatched');
@@ -59,7 +66,7 @@ function onClickCard(evt) {
       const queuedEl = document.querySelector('.btnqueue');
       //   console.log(queuedEl);
       const idEl = document.querySelector('.filmcard-image').dataset.attribute;
-      //   console.log(idEl);
+      // console.log(idEl);
       const srcEl = document.querySelector('.filmcard-image').src;
       //   console.log(srcEl);
       const nameEl = document.querySelector('.filmcard-image').alt;
@@ -71,60 +78,123 @@ function onClickCard(evt) {
       const genreEl = document.querySelector('.filmcard-image').dataset.genre;
       // console.log(genreEl);
       watchedEl.addEventListener('click', onWatchedElClick);
+
+      let noUpdateWatched = null;
+      let noUpdateQueued = null;
+
+      docWatched.get().then(watchedFilms => {
+        watchedFilms.forEach(doc => {
+          const firebaseId = doc.data().id;
+          if (idEl === firebaseId) {
+            noUpdateWatched = 1;
+          }
+        });
+      });
+
+      docQueued.get().then(queuedFilms => {
+        queuedFilms.forEach(doc => {
+          const firebaseId = doc.data().id;
+          if (idEl === firebaseId) {
+            noUpdateQueued = 1;
+          }
+        });
+      });
+
       function onWatchedElClick(e) {
-        docWatched
-          .add({
-            id: idEl,
-            src: srcEl,
-            name: nameEl,
-            date: dateEl,
-            vote: voteEl,
-            genre: genreEl,
-          })
-          .then(function () {
-            console.log('Document successfully written!');
-          })
-          .catch(function (error) {
-            console.log('Error adding document: ', error);
+        if (noUpdateWatched) {
+          alert({
+            text: 'The film you are trying to add is already in the "WATCHED" list. Check library!',
           });
+          return;
+        } else if (noUpdateQueued) {
+          alert({
+            text: 'The film you are trying to add is already in the "QUEUED" list. Check library!',
+          });
+          return;
+        } else {
+          docWatched
+            .add({
+              id: idEl,
+              src: srcEl,
+              name: nameEl,
+              date: dateEl,
+              vote: voteEl,
+              genre: genreEl,
+            })
+            .then(function () {
+              success({
+                text: 'Film added to "WATCHED"',
+              });
+            })
+            .catch(function (error) {
+              console.log('Error adding document: ', error);
+            });
+        }
+        setTimeout(closeModal, 1000);
       }
+
       queuedEl.addEventListener('click', onQueuedElClick);
       function onQueuedElClick(e) {
-        docQueued
-          .add({
-            id: idEl,
-            src: srcEl,
-            name: nameEl,
-            date: dateEl,
-            vote: voteEl,
-            genre: genreEl,
-          })
-          .then(function () {
-            console.log('Document successfully written!');
-          })
-          .catch(function (error) {
-            console.log('Error adding document: ', error);
+        if (noUpdateQueued) {
+          alert({
+            text:
+              'The film you are trying to add is already in the "QUEUED" list and can`t be added to library twice',
           });
+          return;
+        } else if (noUpdateWatched) {
+          alert({
+            text:
+              'The film you are trying to add is already in the "WATCHED" list and can`t be added to library twice',
+          });
+          return;
+        } else {
+          docQueued
+            .add({
+              id: idEl,
+              src: srcEl,
+              name: nameEl,
+              date: dateEl,
+              vote: voteEl,
+              genre: genreEl,
+            })
+            .then(function () {
+              success({
+                text: 'Film added to "QUEUED"',
+              });
+            })
+            .catch(function (error) {
+              console.log('Error adding document: ', error);
+            });
+        }
+        setTimeout(closeModal, 1000);
       }
     })
     .catch(error => console.log(error));
+  
+  document.addEventListener(`keyup`, onEscModalClick);
+  refs.closeModalBtn.addEventListener('click', closeModal);
+  refs.backdrop.addEventListener('click', closeBackdrop);
+}
+function closeBackdrop(e) {
+   if (e.target.classList.value === `backdrop`) { closeModal(); }
+    
+}
+function onEscModalClick(e) {
+        if( e.key === `Escape` ) {closeModal();}
 }
 
-document.addEventListener(`keyup`, e => {
-  if (e.key === `Escape`) {
-    closeModal();
-  }
-});
-
 function closeModal() {
-  refs1.bodyEl.classList.remove('modal-open');
-  refs1.backdrop.classList.add('is-hidden');
+  refs.bodyEl.classList.remove('modal-open');
+  refs.backdrop.classList.add('is-hidden');
   const modalCard = document.querySelector('.filmcard');
 
   if (modalCard) {
     modalCard.remove();
   }
+      document.removeEventListener(`keyup`, onEscModalClick);
+  refs.closeModalBtn.removeEventListener('click', closeModal);
+  refs.backdrop.removeEventListener('click', closeBackdrop);
 }
 
-refs1.closeModalBtn.addEventListener('click', closeModal);
-closeModal();
+
+
