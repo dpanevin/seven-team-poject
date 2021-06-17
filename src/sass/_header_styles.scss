@@ -23,7 +23,7 @@
 }
 
 .navigation__item:not(:last-child) {
-  margin-right: 40px;
+  margin-right: 20px;
 }
 
 .input,
@@ -60,7 +60,7 @@
   justify-content: space-between;
 }
 .navigation__list:not(:last-child) {
-  margin-right: 40px;
+  margin-right: 20px;
 }
 
 .search__form {
@@ -123,9 +123,16 @@
   .title {
     display: block;
     color: $text-color;
+    margin-right: 180px;
   }
   .search__form {
     width: 336px;
+  }
+  .navigation__list:not(:last-child) {
+    margin-right: 40px;
+  }
+  .navigation__item:not(:last-child) {
+    margin-right: 40px;
   }
 }
 
