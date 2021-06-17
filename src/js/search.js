@@ -45,7 +45,6 @@ export default async function onSearch(e) {
             const movies = allPromises[1]; // фильмы
             createMarkup(movies);
             const genreIdsArray = movies.results.map(card => card.genre_ids);
-            console.log(genreIdsArray);
             const genreNamesArray = genreIdsArray.map(film => film.map(genre => getNameById(gnr.genres, genre).name));
             const genreEl = document.querySelectorAll('.film__genre');
             genreEl.forEach((el, ind) => el.textContent = genreNamesArray[ind].join(', '));

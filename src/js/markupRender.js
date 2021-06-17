@@ -14,7 +14,6 @@ export default async function markupRender(movieObj) {
   refs.cardSetEl.innerHTML = markup; // заполняется список
 
   const currentGenreEl = document.querySelectorAll('.film__genre');
-  console.log('Genres: ', currentGenreEl);
 
   const years = document.querySelectorAll('.film__release');
 
