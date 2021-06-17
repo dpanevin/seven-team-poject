@@ -11,8 +11,10 @@ document.addEventListener('DOMContentLoaded', event => {
 });
 
 const loginEl = document.querySelector('.auth');
+const logoutEl = document.querySelector('.logout');
 
 loginEl.addEventListener('click', googleLogin);
+logoutEl.addEventListener('click', googleLogout);
 
 function googleLogin() {
   const provider = new firebase.auth.GoogleAuthProvider();
@@ -21,10 +23,28 @@ function googleLogin() {
     .signInWithPopup(provider)
     .then(result => {
       const user = result.user;
-      loginEl.innerText = `Вы вошли как ${user.displayName}`;
       // console.log(user);
+      loginEl.innerText = `Вы вошли как ${user.displayName}`;
+      localStorage.setItem('status', 'loggedin');
+      localStorage.setItem('userName', `${user.displayName}`);
+      logoutEl.classList.remove('visually-hidden');
     })
     .catch(console.log);
+}
+
+function googleLogout() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  firebase
+    .auth()
+    .signOut(provider)
+    .then(result => {
+      loginEl.innerText = `LOGIN`;
+    })
+    .catch(console.log);
+}
+
+if (localStorage.getItem('status') === 'loggedin') {
+  loginEl.innerText = `Вы вошли как ${localStorage.getItem('userName')}`;
 }
 
 const watchedEl = document.querySelector('.library__btn-watched');
