@@ -26,7 +26,8 @@
           <span class='vote_average'>
             {{vote_average}}
           </span>
-          / {{vote_count}}
+          <span class="vote_slash">/</span>
+        <span class="vote_count">{{vote_count}}</span>
         </b>
       </li>
       <li class='filmcard-title-list-item'>
@@ -37,13 +38,9 @@
           {{popularity}}
         </b>
       </li>
-      <li class='filmcard-title-list-item'>
-        <span class='original'>
-          Оригинальное название
-        </span>
-        <b>
-          {{original_title}}
-        </b>
+      <li class='filmcard-title-list-item  wrap'>
+        <span class='original'>Название</span>
+        <b class="original_title">{{original_title}}</b>
       </li>
       <li class='filmcard-title-list-item'>
         <span class='genre'>
@@ -70,12 +67,12 @@
     <div class='btn__cont'>
       <button type='button' class='button btnwatched'>
         <b>
-          в просмотреные
+          просмотреные
         </b>
       </button>
       <button type='button' class='button btnqueue'>
         <b>
-          в очередь
+          очередь
         </b>
       </button>
     </div>
