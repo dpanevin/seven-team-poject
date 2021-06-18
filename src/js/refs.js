@@ -22,7 +22,8 @@ export default function getRefs() {
       teamCard: document.querySelector(".team__card"),
       paginationEl: document.getElementById('tui-pagination-container'),
       watchedBtn: document.querySelector('.library__btn-watched'),
-      queueBtn: document.querySelector('.library__btn-queue')
+      queueBtn: document.querySelector('.library__btn-queue'),
+      searchError: document.querySelector('.search__error')
   };
 
   return refs;
