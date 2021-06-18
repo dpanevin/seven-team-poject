@@ -11,6 +11,7 @@ defaults.icon = true;
 defaults.minHeight = '20px';
 defaults.delay = 2000;
 defaults.closerHover = false;
+defaults.width = '300px';
 
 import 'firebase/database';
 import 'firebase/messaging';
