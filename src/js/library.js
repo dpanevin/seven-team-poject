@@ -42,7 +42,7 @@ function googleLogout() {
     .auth()
     .signOut()
     .then(result => {
-      loginEl.innerText = `LOGIN`;
+      loginEl.innerText = `ВОЙТИ`;
       localStorage.setItem('status', '');
       localStorage.setItem('userName', '');
       logoutEl.classList.add('visually-hidden');
