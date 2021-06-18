@@ -6,10 +6,11 @@ import { alert, success, defaults } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
 
 defaults.sticker = false;
-defaults.closer = false;
-defaults.icon = false;
+defaults.closer = true;
+defaults.icon = true;
 defaults.minHeight = '20px';
 defaults.delay = 2000;
+defaults.closerHover = false;
 
 import 'firebase/database';
 import 'firebase/messaging';
