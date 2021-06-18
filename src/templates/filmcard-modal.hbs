@@ -1,6 +1,6 @@
 <article class='filmcard'>
   <div class='filmcard-image__thumb'>
-    <img
+    {{!-- <img
       class='filmcard-image'
       src="https://image.tmdb.org/t/p/w500/{{poster_path}}"
       alt="{{title}}"
@@ -9,7 +9,11 @@
       data-date="{{release_date}}"
       data-vote="{{vote_average}}"
       data-genre="{{#each this.genres}}{{name}} {{/each}}"
-    />
+    /> --}}
+
+      {{#if poster_path}} <img class='filmcard-image' src='https://image.tmdb.org/t/p/w500/{{poster_path}}' alt='{{title}}' data-attribute='{{id}}' width='100%' data-date="{{release_date}}" data-vote="{{vote_average}}" data-genre="{{#each this.genres}}{{name}} {{/each}}"/>
+      {{else}} <img class="filmcard-image" src='https://www.hd-film.stream/assets/general/images/no_poster.jpg' alt='постер к фильму отсутствует' data-attribute='{{id}}' width='100%' data-date="{{release_date}}" data-vote="{{vote_average}}" data-genre="{{#each this.genres}}{{name}} {{/each}}"/>
+      {{/if}}
   </div>
 
   <div class='filmcard-content'>
