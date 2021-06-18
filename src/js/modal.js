@@ -52,7 +52,7 @@ function onClickCard(evt) {
 
   async function e() {
     const renderId = await movieapi.fetchMovieById(idCard);
-    // const markup = ;
+    // console.log(renderId);
 
     refs.modal.insertAdjacentHTML('beforeend', filmcard(renderId));
     return renderId;
@@ -60,6 +60,11 @@ function onClickCard(evt) {
 
   e()
     .then(response => {
+      const filmGenres = response.genres
+        .map(genre => genre.name)
+        .slice(0, 2)
+        .join(', ');
+      // console.log(filmGenres);
       const watchedEl = document.querySelector('.btnwatched');
       //   console.log(watchedEl);
       const queuedEl = document.querySelector('.btnqueue');
@@ -74,7 +79,7 @@ function onClickCard(evt) {
       //   console.log(dataEl);
       const voteEl = document.querySelector('.filmcard-image').dataset.vote;
       //   console.log(voteEl);
-      const genreEl = document.querySelector('.filmcard-image').dataset.genre;
+      // const genreEl = document.querySelector('.filmcard-image').dataset.genre;
       // console.log(genreEl);
       watchedEl.addEventListener('click', onWatchedElClick);
 
@@ -102,12 +107,12 @@ function onClickCard(evt) {
       function onWatchedElClick(e) {
         if (noUpdateWatched) {
           alert({
-            text: 'The film you are trying to add is already in the "WATCHED" list. Check library!',
+            text: 'Этот фильм уже просмотрен. Проверь страницу "Библиотека"',
           });
           return;
         } else if (noUpdateQueued) {
           alert({
-            text: 'The film you are trying to add is already in the "QUEUED" list. Check library!',
+            text: 'Этот фильм уже в очереди на просмотр. Проверь страницу "Библиотека"',
           });
           return;
         } else {
@@ -118,7 +123,7 @@ function onClickCard(evt) {
               name: nameEl,
               date: dateEl,
               vote: voteEl,
-              genre: genreEl,
+              genre: filmGenres,
             })
             .then(function () {
               success({
@@ -136,12 +141,12 @@ function onClickCard(evt) {
       function onQueuedElClick(e) {
         if (noUpdateQueued) {
           alert({
-            text: 'The film you are trying to add is already in the "QUEUED" list. Check library!',
+            text: 'Этот фильм уже в очереди на просмотр. Проверь страницу "Библиотека"',
           });
           return;
         } else if (noUpdateWatched) {
           alert({
-            text: 'The film you are trying to add is already in the "WATCHED" list. Check library!',
+            text: 'Этот фильм уже просмотрен. Проверь страницу "Библиотека"',
           });
           return;
         } else {
@@ -152,7 +157,7 @@ function onClickCard(evt) {
               name: nameEl,
               date: dateEl,
               vote: voteEl,
-              genre: genreEl,
+              genre: filmGenres,
             })
             .then(function () {
               success({
