@@ -12,21 +12,27 @@ const refs = getRefs();
 const markupTeamModal = cardTpl(teamModal);
 refs.markupModal.insertAdjacentHTML('beforeend', markupTeamModal);
 
-    refs.teamLink.addEventListener('click', onTeamCardOpen);
-    refs.teamCard.addEventListener('click', onBackdropClick);
-    window.addEventListener('keydown', onCloseTeamCard);
+refs.teamLink.addEventListener('click', onTeamCardOpen);
+refs.teamCard.addEventListener('click', onBackdropClick);
+window.addEventListener('keydown', onEscClick);
 
-function onTeamCardOpen(event){
-    event.preventDefault();
-    refs.teamCard.classList.remove('is-hidden');
+function onTeamCardOpen(event) {
+  event.preventDefault();
+  refs.teamCard.classList.remove('is-hidden');
 }
 
-  function onCloseTeamCard() {
-      refs.teamCard.classList.add('is-hidden');  
-    }
-  
-function onBackdropClick(event){
-    if(event.currentTarget === event.target){
-        onCloseTeamCard();  
-    }
+function onCloseTeamCard() {
+  refs.teamCard.classList.add('is-hidden');
+}
+
+function onBackdropClick(event) {
+  if (event.currentTarget === event.target) {
+    onCloseTeamCard();
+  }
+}
+
+function onEscClick(event) {
+  if (event.key === `Escape`) {
+    onCloseTeamCard();
+  }
 }
