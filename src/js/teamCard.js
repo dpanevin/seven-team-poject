@@ -31,7 +31,7 @@ function onBackdropClick(event) {
   }
 }
 
-function onEscClick() {
+function onEscClick(event) {
   if (event.key === `Escape`) {
     onCloseTeamCard();
   }
