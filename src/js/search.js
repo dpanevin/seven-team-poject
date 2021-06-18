@@ -1,4 +1,4 @@
-import createMarkup from './markupRender'
+import createMarkup from './markupRender';
 import { alert } from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
@@ -6,23 +6,20 @@ import getRefs from './refs';
 
 const refs = getRefs();
 
-
 export { onSearch, renderSearchPage };
 
 async function onSearch(e, filmsApi) {
-
     const form = e.currentTarget;
 
    
     
     filmsApi.query = form.elements.query.value;
 
-    // form.reset();
-    filmsApi.resetPage();
+  // form.reset();
+  filmsApi.resetPage();
 
-    await renderSearchPage(filmsApi);
-
-};
+  await renderSearchPage(filmsApi);
+}
 
 async function renderSearchPage(filmsApi) {
     try {
@@ -60,11 +57,14 @@ async function renderSearchPage(filmsApi) {
     } catch (error) {
         console.log(error);
     }
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function clearMarkup() {
-    refs.cardSetEl.innerHTML = '';
-};
+  refs.cardSetEl.innerHTML = '';
+}
 
 
 function onFetchError() {
@@ -77,5 +77,5 @@ function onFetchError() {
 }
  
 function getNameById(arr, id) {
-    return arr.find(x => x.id === id);
-} 
+  return arr.find(x => x.id === id);
+}

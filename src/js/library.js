@@ -42,7 +42,7 @@ function googleLogout() {
     .auth()
     .signOut()
     .then(result => {
-      loginEl.innerText = `LOGIN`;
+      loginEl.innerText = `ВОЙТИ`;
       localStorage.setItem('status', '');
       localStorage.setItem('userName', '');
       logoutEl.classList.add('visually-hidden');
@@ -76,6 +76,7 @@ function watchedPageRender() {
   addSpinner();
   cardSetEl.innerHTML = '';
   docWatched.get().then(watchedFilms => {
+    stopSpinner();
     watchedFilms.forEach(doc => {
       const id = doc.data().id;
       // console.log(id);
@@ -123,7 +124,6 @@ function watchedPageRender() {
 
       const libraryEl = document.querySelector('.card__set');
       libraryEl.insertAdjacentHTML('afterbegin', markup);
-      stopSpinner();
     });
   });
 }
@@ -142,6 +142,7 @@ function queuePageRender() {
   addSpinner();
   cardSetEl.innerHTML = '';
   docQueued.get().then(queuedFilms => {
+    stopSpinner();
     queuedFilms.forEach(doc => {
       const id = doc.data().id;
       // console.log(id);
@@ -189,7 +190,6 @@ function queuePageRender() {
 
       const libraryEl = document.querySelector('.card__set');
       libraryEl.insertAdjacentHTML('afterbegin', markup);
-      stopSpinner();
     });
   });
 }
