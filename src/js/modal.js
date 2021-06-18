@@ -127,7 +127,7 @@ function onClickCard(evt) {
             })
             .then(function () {
               success({
-                text: 'Film added to "WATCHED"',
+                text: 'Фильм добавлен в "Просмотренные"',
               });
             })
             .catch(function (error) {
@@ -161,7 +161,7 @@ function onClickCard(evt) {
             })
             .then(function () {
               success({
-                text: 'Film added to "QUEUED"',
+                text: 'Фильм добавлен в "Очередь"',
               });
             })
             .catch(function (error) {
