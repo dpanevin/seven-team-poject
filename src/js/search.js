@@ -57,10 +57,8 @@ async function renderSearchPage(filmsApi) {
     } catch (error) {
         console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-  }
-}
+  } 
+
 
 function clearMarkup() {
   refs.cardSetEl.innerHTML = '';
