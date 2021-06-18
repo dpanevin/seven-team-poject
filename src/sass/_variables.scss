@@ -11,6 +11,6 @@ $desktop: 1024px;
 @mixin font($fw, $fs, $lh, $cl) {
   font-weight: $fw;
   font-size: $fs;
-  line-height: $lh;
+  // line-height: $lh;
   color: $cl;
 }
