@@ -3,16 +3,16 @@
 }
 
 .card__info {
-  
+  border-radius: 5px;
   transition: transform 300ms $transition-timing-function;
 }
 
 .card__info:hover {
   box-shadow:
--15px -15px 2px -5px rgba(123,51,90,.5),
--15px 15px 2px -5px rgba(60,74,123,.5),
-15px -15px 2px -5px rgba(255,0,0,.5),
-15px 15px 2px -5px rgba(60,123,68,.5);
+-15px -15px 5px -5px rgba(123,51,90,.5),
+-15px 15px 5px -5px rgba(60,74,123,.5),
+15px -15px 5px -5px rgba(255,0,0,.5),
+15px 15px 5px -5px rgba(60,123,68,.5);
   transform: scale(1.05);
   cursor: pointer;
 }

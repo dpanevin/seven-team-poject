@@ -90,7 +90,13 @@
   letter-spacing: 0em;
   text-align: left;
   color: $text-color;
+  transition: border-color 250ms var(--timing-function);
 }
+
+.input:focus {
+  border-color: $accent-color;
+}
+
 .current::after {
   content: '';
   left: 0;
@@ -160,4 +166,15 @@
       url('../images/header_img/img_desk@2.jpg');
     background-size: 1600px 230px;
   }
+}
+
+.search__error {
+  font-weight: 400px;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  color: $warning-color;
 }
