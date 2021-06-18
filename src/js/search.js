@@ -12,6 +12,8 @@ export { onSearch, renderSearchPage };
 async function onSearch(e, filmsApi) {
 
     const form = e.currentTarget;
+
+   
     
     filmsApi.query = form.elements.query.value;
 
@@ -23,7 +25,9 @@ async function onSearch(e, filmsApi) {
 };
 
 async function renderSearchPage(filmsApi) {
-     try {
+    try {
+        refs.searchError.classList.add('visually-hidden');
+        
         if (filmsApi.query === '') {
             clearMarkup();
             onFetchError();
@@ -31,8 +35,7 @@ async function renderSearchPage(filmsApi) {
                 createMarkup(movies);
 
             });
-        } 
-        else {
+        } else {
             // filmsApi.fetchMoviesByQuery().then(movies => {
             //     createMarkup(movies);
 
@@ -49,6 +52,10 @@ async function renderSearchPage(filmsApi) {
             const genreNamesArray = genreIdsArray.map(film => film.map(genre => getNameById(gnr.genres, genre).name));
             const genreEl = document.querySelectorAll('.film__genre');
             genreEl.forEach((el, ind) => el.textContent = genreNamesArray[ind].splice(0, 2).join(', '));
+
+            if (movies.total_results === 0) {
+                refs.searchError.classList.remove('visually-hidden');
+            } 
         }
     } catch (error) {
         console.log(error);
@@ -59,14 +66,16 @@ function clearMarkup() {
     refs.cardSetEl.innerHTML = '';
 };
 
+
 function onFetchError() {
     alert({
-      text: 'Search field is empty. Please enter the movie name!',
+      text: 'Поле ввода пустое. Введите название фильма!',
+      delay: '2000',
+      closer: true,
+      width: '300px'
     });
 }
  
-
-
 function getNameById(arr, id) {
     return arr.find(x => x.id === id);
 } 
