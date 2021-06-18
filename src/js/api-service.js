@@ -45,7 +45,7 @@ export default class MoviesApi {
 
     try {
       const response = await fetch(url);
-      const movies = await response.json();
+      const movies = response.json();
       this.totalResults = movies.total_results;
       this.currentRequest = 'search';
       return movies;
